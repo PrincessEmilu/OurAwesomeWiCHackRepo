@@ -11,5 +11,6 @@ namespace coolGame
 {
     abstract class Enemy : Entity
     {
+        public abstract void Interact();
     }
 }
