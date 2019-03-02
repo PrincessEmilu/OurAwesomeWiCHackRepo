@@ -32,6 +32,7 @@ namespace coolGame
         Texture2D playerTexture;
         Texture2D level1Text;
         Texture2D level1Icon;
+        Texture2D cursor;
 
         //Control
         KeyboardState kbState;
@@ -62,6 +63,7 @@ namespace coolGame
         {
             // TODO: Add your initialization logic here
             this.gameState = GameState.TITLE_SCREEN;
+            IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -80,6 +82,9 @@ namespace coolGame
             playerTexture = Content.Load<Texture2D>("rabbit");
             level1Icon = Content.Load<Texture2D>("carrot");
             level1Text = Content.Load<Texture2D>("level1");
+
+            cursor = Content.Load<Texture2D>("arrow2");
+            Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
 
@@ -234,7 +239,6 @@ namespace coolGame
             int l1Texty = l1Icony + l1IconHeight;
 
             spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
-            
         }
     }
 }

@@ -9,9 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace coolGame
 {
-    class HackableEnempy : Enemy
+    class HackableEnemy : Enemy
     {
-        public HackableEnempy(Texture2D texture, Rectangle position)
+        public HackableEnemy(Texture2D texture, Rectangle position)
         : base(texture, position) { }
 
         private bool hasBeenHacked;

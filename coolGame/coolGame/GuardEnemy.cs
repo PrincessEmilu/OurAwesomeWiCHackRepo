@@ -5,25 +5,31 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace coolGame
 {
-
-    abstract class Enemy : Entity
+    class GuardEnemy : HackableEnemy
     {
-        public Enemy(Texture2D texture, Rectangle position)
-            : base(texture, position) { }
+        public GuardEnemy(Texture2D texture, Rectangle position)
+            :base(texture, position)
+        {
 
+        }
+        //Hacking
+        public override void Interact()
+        {
+            base.Interact();
+        }
+
+        //Updating and Drawing
         public override void Update(GameTime gameTime)
         {
-            
+            base.Update(gameTime);
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            base.Draw(spriteBatch);
         }
 
-        public abstract void Interact();
     }
 }
