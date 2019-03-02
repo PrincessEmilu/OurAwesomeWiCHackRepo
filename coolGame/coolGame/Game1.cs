@@ -41,6 +41,7 @@ namespace coolGame
         //Entities
         Player player;
         List<Entity> listEntities;
+        //changes
 
         public Game1()
         {
