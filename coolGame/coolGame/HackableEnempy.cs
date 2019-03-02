@@ -11,9 +11,8 @@ namespace coolGame
 {
     class HackableEnempy : Enemy
     {
-
-        public HackableEnempy(Texture2D texture, Rectangle position, KeyboardState kbState)
-        : base(texture, position, kbState) { }
+        public HackableEnempy(Texture2D texture, Rectangle position)
+        : base(texture, position) { }
 
         private bool hasBeenHacked;
 
