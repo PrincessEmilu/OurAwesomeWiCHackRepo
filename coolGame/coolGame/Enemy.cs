@@ -12,6 +12,8 @@ namespace coolGame
 
     abstract class Enemy : Entity
     {
+        public Enemy(Texture2D texture, Rectangle position, KeyboardState kbState)
+            : base(texture, position, kbState) { }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
