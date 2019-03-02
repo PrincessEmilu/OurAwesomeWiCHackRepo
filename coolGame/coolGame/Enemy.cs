@@ -9,8 +9,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace coolGame
 {
+
     abstract class Enemy : Entity
     {
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture, position, Color.White);
+        }
+
         public abstract void Interact();
     }
 }
