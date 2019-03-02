@@ -141,6 +141,7 @@ namespace coolGame
                     break;
 
                 case GameState.LEVEL_SELECT:
+                    LevelSelectDraw();
                     break;
 
                 case GameState.INGAME_PLAYING:
@@ -175,15 +176,17 @@ namespace coolGame
         {
             int screenWidth = GraphicsDevice.Viewport.Width;
             int screenHeight = GraphicsDevice.Viewport.Height;
-            int titleWidth = title.Width * 2 / 3;
-            int titleHeight = title.Height * 2 / 3;
+
+            int titleScalar = screenWidth * 4 / 5;
+            int titleWidth = screenWidth * 4 / 5;
+            int titleHeight = title.Height * titleWidth / title.Width;
 
             spriteBatch.Draw(title, new Rectangle(screenWidth / 2 - titleWidth / 2,
                 screenHeight / 2 - titleHeight, 
                 titleWidth, titleHeight), Color.White);
             
-            int pressEnterWidth = pressEnterToPlay.Width / 3;
-            int pressEnterHeight = pressEnterToPlay.Height / 3;
+            int pressEnterWidth = screenWidth / 3;
+            int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
 
             spriteBatch.Draw(pressEnterToPlay, new Rectangle(screenWidth / 2 - pressEnterWidth / 2, 
                 3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight), Color.White);
@@ -199,6 +202,14 @@ namespace coolGame
             {
                 gameState = GameState.INGAME_PLAYING;
             }
+        }
+
+        /// <summary>
+        /// Draws the screen for the Level Select screen.
+        /// </summary>
+        protected void LevelSelectDraw()
+        {
+
         }
     }
 }
