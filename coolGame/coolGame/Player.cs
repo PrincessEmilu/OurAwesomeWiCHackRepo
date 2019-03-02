@@ -16,15 +16,10 @@ namespace coolGame
         //Movement
         const int moveSpeed = 5;
 
-        //Current keyboard state
-        KeyboardState kbState;
-
         public Player(Texture2D texture, Rectangle position, KeyboardState kbState)
         {
             this.texture = texture;
             this.position = position;
-
-            this.kbState = kbState;
         }
 
         public override void Update(GameTime gameTime)
@@ -32,6 +27,7 @@ namespace coolGame
             //
             //Movement
             //
+            KeyboardState kbState = Keyboard.GetState();
 
             //Right
             if (kbState.IsKeyDown(Keys.D))
