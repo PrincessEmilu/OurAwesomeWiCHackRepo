@@ -111,6 +111,7 @@ namespace coolGame
                     }
 
                     break;
+
                 case GameState.LEVEL_SELECT:
                     //Move to level select screen if player presses spacebar
                     if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
@@ -118,12 +119,13 @@ namespace coolGame
                         gameState = GameState.INGAME_PLAYING;
                     }
                     break;
+
                 case GameState.INGAME_PLAYING:
 
                     //Calls player update logic
                     player.Update(gameTime);
-
                     break;
+
                 case GameState.INGAME_HACKING:
                     break;
             }
@@ -147,10 +149,14 @@ namespace coolGame
                 case GameState.TITLE_SCREEN:
                     spriteBatch.Draw(title, new Rectangle(0, 0, title.Width, title.Height), Color.White);
                     break;
+
                 case GameState.LEVEL_SELECT:
                     break;
+
                 case GameState.INGAME_PLAYING:
+                    player.Draw(spriteBatch);
                     break;
+
                 case GameState.INGAME_HACKING:
                     break;
             }
