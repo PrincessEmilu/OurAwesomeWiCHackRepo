@@ -4,6 +4,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace coolGame
 {
+
+    enum GameState
+    {
+       TITLE_SCREEN,    // Title screen
+       LEVEL_SELECT,    // You are selecting a level in the game
+       INGAME_PLAYING,  // You are playing the game, walking around, etc. (PLAYING)
+       INGAME_HACKING,  // You are hacking an object/world (PAUSED)
+    }
+
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
