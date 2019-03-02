@@ -44,8 +44,9 @@ namespace coolGame
             Content.RootDirectory = "Content";
 
             //Changes window size
-            graphics.PreferredBackBufferWidth = 1280;  // set this value to the desired width of your window
-            graphics.PreferredBackBufferHeight = 720;   // set this value to the desired height of your window
+            graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 1200;   // set this value to the desired height of your window
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
         }
 
@@ -146,6 +147,7 @@ namespace coolGame
                     break;
 
                 case GameState.LEVEL_SELECT:
+                    LevelSelectDraw();
                     break;
 
                 case GameState.INGAME_PLAYING:
@@ -164,8 +166,8 @@ namespace coolGame
         /// </summary>
         protected void TitleScreenUpdate()
         {
-            //Move to level select screen if player presses spacebar
-            if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+            //Move to level select screen if player presses enter
+            if (kbState.IsKeyDown(Keys.Enter) && pbState.IsKeyUp(Keys.Enter))
             {
                 gameState = GameState.LEVEL_SELECT;
             }
@@ -180,15 +182,17 @@ namespace coolGame
         {
             int screenWidth = GraphicsDevice.Viewport.Width;
             int screenHeight = GraphicsDevice.Viewport.Height;
-            int titleWidth = title.Width * 2 / 3;
-            int titleHeight = title.Height * 2 / 3;
+
+            int titleScalar = screenWidth * 4 / 5;
+            int titleWidth = screenWidth * 4 / 5;
+            int titleHeight = title.Height * titleWidth / title.Width;
 
             spriteBatch.Draw(title, new Rectangle(screenWidth / 2 - titleWidth / 2,
                 screenHeight / 2 - titleHeight, 
                 titleWidth, titleHeight), Color.White);
             
-            int pressEnterWidth = pressEnterToPlay.Width / 3;
-            int pressEnterHeight = pressEnterToPlay.Height / 3;
+            int pressEnterWidth = screenWidth / 3;
+            int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
 
             spriteBatch.Draw(pressEnterToPlay, new Rectangle(screenWidth / 2 - pressEnterWidth / 2, 
                 3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight), Color.White);
@@ -199,11 +203,19 @@ namespace coolGame
         /// </summary>
         protected void LevelSelectUpdate()
         {
-            //Move to level select screen if player presses spacebar
-            if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+            //Move to level select screen if player presses spaentercebar
+            if (kbState.IsKeyDown(Keys.Enter) && pbState.IsKeyUp(Keys.Enter))
             {
                 gameState = GameState.INGAME_PLAYING;
             }
+        }
+
+        /// <summary>
+        /// Draws the screen for the Level Select screen.
+        /// </summary>
+        protected void LevelSelectDraw()
+        {
+
         }
     }
 }
