@@ -1,0 +1,10 @@
+﻿### Level Structures
+### The '#'s act as comment lines, these should be ignored. 
+
+### Entities
+
+PosX,PosY,Type(ClassName)
+
+### Background image
+
+BackgroundImageName
