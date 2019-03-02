@@ -178,14 +178,20 @@ namespace coolGame
         /// </summary>
         protected void TitleScreenDraw()
         {
-            int width = title.Width;
-            int height = title.Height;
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+            int titleWidth = title.Width * 2 / 3;
+            int titleHeight = title.Height * 2 / 3;
 
-            spriteBatch.Draw(title, new Rectangle(GraphicsDevice.Viewport.Width / 2 - title.Width / 2, 
-                GraphicsDevice.Viewport.Height / 2 - title.Height, 
-                title.Width, title.Height), Color.White);
+            spriteBatch.Draw(title, new Rectangle(screenWidth / 2 - titleWidth / 2,
+                screenHeight / 2 - titleHeight, 
+                titleWidth, titleHeight), Color.White);
+            
+            int pressEnterWidth = pressEnterToPlay.Width / 3;
+            int pressEnterHeight = pressEnterToPlay.Height / 3;
 
-            spriteBatch.Draw(pressEnterToPlay, new Rectangle(0, 0, pressEnterToPlay.Width, pressEnterToPlay.Height), Color.White);
+            spriteBatch.Draw(pressEnterToPlay, new Rectangle(screenWidth / 2 - pressEnterWidth / 2, 
+                3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight), Color.White);
         }
 
         /// <summary>
