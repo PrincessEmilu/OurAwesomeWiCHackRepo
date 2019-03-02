@@ -28,6 +28,7 @@ namespace coolGame
 
         // DRAWING ATTRIBUTES
         Texture2D title;
+        Texture2D pressEnterToPlay;
         Texture2D playerTexture;
 
         //Control
@@ -68,8 +69,8 @@ namespace coolGame
 
 
             title = Content.Load<Texture2D>("title");   // loads the title
-
-            playerTexture = Content.Load<Texture2D>("player");
+            pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
+            playerTexture = Content.Load<Texture2D>("rabbit");
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), kbState);
 
@@ -103,20 +104,9 @@ namespace coolGame
             {
                 case GameState.TITLE_SCREEN:
                     TitleScreenUpdate();
-
-                    //Move to level select screen if player presses spacebar
-                    if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
-                    {
-                        gameState = GameState.LEVEL_SELECT;
-                    }
-
                     break;
                 case GameState.LEVEL_SELECT:
-                    //Move to level select screen if player presses spacebar
-                    if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
-                    {
-                        gameState = GameState.INGAME_PLAYING;
-                    }
+                    LevelSelectUpdate();
                     break;
                 case GameState.INGAME_PLAYING:
 
@@ -163,7 +153,11 @@ namespace coolGame
         /// </summary>
         protected void TitleScreenUpdate()
         {
-            
+            //Move to level select screen if player presses spacebar
+            if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+            {
+                gameState = GameState.LEVEL_SELECT;
+            }
         }
 
         /// <summary>
@@ -173,9 +167,26 @@ namespace coolGame
         /// </summary>
         protected void TitleScreenDraw()
         {
+            int width = title.Width;
+            int height = title.Height;
+
             spriteBatch.Draw(title, new Rectangle(GraphicsDevice.Viewport.Width / 2 - title.Width / 2, 
                 GraphicsDevice.Viewport.Height / 2 - title.Height, 
                 title.Width, title.Height), Color.White);
+
+            spriteBatch.Draw(pressEnterToPlay, new Rectangle(0, 0, pressEnterToPlay.Width, pressEnterToPlay.Height), Color.White);
+        }
+
+        /// <summary>
+        /// Updates the level select screen.
+        /// </summary>
+        protected void LevelSelectUpdate()
+        {
+            //Move to level select screen if player presses spacebar
+            if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+            {
+                gameState = GameState.INGAME_PLAYING;
+            }
         }
     }
 }
