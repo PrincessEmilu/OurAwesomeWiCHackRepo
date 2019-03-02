@@ -5,6 +5,10 @@ using Microsoft.Xna.Framework.Input;
 namespace coolGame
 {
 
+
+    /// <summary>
+    /// Different states that the game can be in.
+    /// </summary>
     enum GameState
     {
        TITLE_SCREEN,    // Title screen
@@ -20,6 +24,10 @@ namespace coolGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        GameState gameState;
+
+        // Attributes
+        Texture2D title;
 
         public Game1()
         {
@@ -36,6 +44,7 @@ namespace coolGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            this.gameState = GameState.TITLE_SCREEN;
 
             base.Initialize();
         }
@@ -48,6 +57,7 @@ namespace coolGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            title = Content.Load<Texture2D>("title");   // loads the title
 
             // TODO: use this.Content to load your game content here
         }
@@ -71,7 +81,21 @@ namespace coolGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            
+
             // TODO: Add your update logic here
+            switch(gameState)
+            {
+                case GameState.TITLE_SCREEN:
+                    TitleScreenUpdate();
+                    break;
+                case GameState.LEVEL_SELECT:
+                    break;
+                case GameState.INGAME_PLAYING:
+                    break;
+                case GameState.INGAME_HACKING:
+                    break;
+            }
 
             base.Update(gameTime);
         }
@@ -84,9 +108,31 @@ namespace coolGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
 
+            // TODO: Add your drawing code here
+            switch (gameState)
+            {
+                case GameState.TITLE_SCREEN:
+                    spriteBatch.Draw(title, new Rectangle(0, 0, title.Width, title.Height), Color.White);
+                    break;
+                case GameState.LEVEL_SELECT:
+                    break;
+                case GameState.INGAME_PLAYING:
+                    break;
+                case GameState.INGAME_HACKING:
+                    break;
+            }
+            spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        /// <summary>
+        /// Does some stuff, updates the title screen
+        /// </summary>
+        protected void TitleScreenUpdate()
+        {
+            
         }
     }
 }
