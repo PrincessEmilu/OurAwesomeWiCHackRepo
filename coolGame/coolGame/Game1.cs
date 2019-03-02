@@ -105,15 +105,17 @@ namespace coolGame
                 case GameState.TITLE_SCREEN:
                     TitleScreenUpdate();
                     break;
+
                 case GameState.LEVEL_SELECT:
                     LevelSelectUpdate();
                     break;
+
                 case GameState.INGAME_PLAYING:
 
                     //Calls player update logic
                     player.Update(gameTime);
-
                     break;
+
                 case GameState.INGAME_HACKING:
                     break;
             }
@@ -137,10 +139,14 @@ namespace coolGame
                 case GameState.TITLE_SCREEN:
                     TitleScreenDraw();
                     break;
+
                 case GameState.LEVEL_SELECT:
                     break;
+
                 case GameState.INGAME_PLAYING:
+                    player.Draw(spriteBatch);
                     break;
+
                 case GameState.INGAME_HACKING:
                     break;
             }
