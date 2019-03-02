@@ -12,7 +12,7 @@ namespace coolGame
     abstract class Entity : GameObject
     {
         //All entities need a texture and a rectangle
-        protected Texture2D Texture { get; set; }
-        protected Rectangle Position { get; set; }
+        public Texture2D Texture { get; protected set; }
+        public Rectangle Position { get; protected set; }
     }
 }
