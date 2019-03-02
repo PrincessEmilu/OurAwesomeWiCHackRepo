@@ -12,10 +12,7 @@ namespace coolGame
     abstract class Entity : GameObject
     {
         public Entity (Texture2D texture, Rectangle position, KeyboardState kbState)
-        {
-            this.texture = texture;
-            this.position = position;
-        }
+        : base(texture, position, kbState) { }
         
         //All entities need a texture and a rectangle
         protected Texture2D texture;
