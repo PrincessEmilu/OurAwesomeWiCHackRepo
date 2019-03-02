@@ -16,11 +16,8 @@ namespace coolGame
         //Movement
         const int moveSpeed = 5;
 
-        public Player(Texture2D texture, Rectangle position, KeyboardState kbState)
-        {
-            this.texture = texture;
-            this.position = position;
-        }
+        public Player(Texture2D texture, Rectangle position, KeyboardState kbState) 
+            : base(texture, position, kbState) { }
 
         public override void Update(GameTime gameTime)
         {
