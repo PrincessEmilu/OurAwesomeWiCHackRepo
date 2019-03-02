@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
 
 namespace coolGame
 {
@@ -25,14 +24,14 @@ namespace coolGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
         GameState gameState;
 
         // DRAWING ATTRIBUTES
         Texture2D title;
         Texture2D pressEnterToPlay;
         Texture2D playerTexture;
-        Texture2D enemyTexture;
+        Texture2D level1Text;
+        Texture2D level1Icon;
 
         //Control
         KeyboardState kbState;
@@ -40,8 +39,6 @@ namespace coolGame
 
         //Entities
         Player player;
-        List<Entity> listEntities;
-        //changes
 
         public Game1()
         {
@@ -65,7 +62,6 @@ namespace coolGame
         {
             // TODO: Add your initialization logic here
             this.gameState = GameState.TITLE_SCREEN;
-            listEntities = new List<Entity>();
 
             base.Initialize();
         }
@@ -79,20 +75,13 @@ namespace coolGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-            title = Content.Load<Texture2D>("title");   // loads the title
+            title = Content.Load<Texture2D>("title");
             pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
             playerTexture = Content.Load<Texture2D>("rabbit");
-            enemyTexture = Content.Load<Texture2D>("enemy");
+            level1Icon = Content.Load<Texture2D>("carrot");
+            level1Text = Content.Load<Texture2D>("level1");
 
-            //Creates the player
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
-
-            //Adds enemies to the list
-            //The list should probably exist in the scope of game1, but adding enemies will probably be done via level
-            //ANNA I hope you read this :p
-            listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 400, enemyTexture.Width, enemyTexture.Height)));
-
 
         }
 
@@ -134,12 +123,6 @@ namespace coolGame
 
                     //Calls player update logic
                     player.Update(gameTime);
-
-                    //Updates entities; eventually will be done with level's update
-                    foreach(Entity e in listEntities)
-                    {
-                        e.Update(gameTime);
-                    }
                     break;
 
                 case GameState.INGAME_HACKING:
@@ -171,16 +154,7 @@ namespace coolGame
                     break;
 
                 case GameState.INGAME_PLAYING:
-
-                    //Draws player
                     player.Draw(spriteBatch);
-
-                    //Draws entites; eventually handled by level
-                    foreach(Entity e in listEntities)
-                    {
-                        e.Draw(spriteBatch);
-                    }
-                    
                     break;
 
                 case GameState.INGAME_HACKING:
@@ -211,8 +185,7 @@ namespace coolGame
         {
             int screenWidth = GraphicsDevice.Viewport.Width;
             int screenHeight = GraphicsDevice.Viewport.Height;
-
-            int titleScalar = screenWidth * 4 / 5;
+            
             int titleWidth = screenWidth * 4 / 5;
             int titleHeight = title.Height * titleWidth / title.Width;
 
@@ -244,7 +217,24 @@ namespace coolGame
         /// </summary>
         protected void LevelSelectDraw()
         {
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
 
+            int l1IconWidth = screenWidth / 6;
+            int l1IconHeight = level1Icon.Height * l1IconWidth / level1Icon.Width;
+            int l1Iconx = screenWidth / 5 - l1IconWidth / 2;
+            int l1Icony = screenHeight / 3 - l1IconHeight / 2;
+
+            spriteBatch.Draw(level1Icon, new Rectangle(l1Iconx, l1Icony, l1IconWidth, l1IconHeight), Color.White);
+
+            int l1TextWidth = screenWidth / 5;
+            int l1TextHeight = level1Text.Height * l1TextWidth / level1Text.Width;
+            // Level 1 select Text is in terms of the icon
+            int l1Textx = l1Iconx + l1IconWidth / 2 - l1TextWidth / 2;  
+            int l1Texty = l1Icony + l1IconHeight;
+
+            spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
+            
         }
     }
 }
