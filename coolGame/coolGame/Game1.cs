@@ -42,6 +42,12 @@ namespace coolGame
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            //Changes window size
+            graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
+            graphics.PreferredBackBufferHeight = 1200;   // set this value to the desired height of your window
+            graphics.IsFullScreen = true;
+            graphics.ApplyChanges();
         }
 
         /// <summary>
@@ -160,8 +166,8 @@ namespace coolGame
         /// </summary>
         protected void TitleScreenUpdate()
         {
-            //Move to level select screen if player presses spacebar
-            if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+            //Move to level select screen if player presses enter
+            if (kbState.IsKeyDown(Keys.Enter) && pbState.IsKeyUp(Keys.Enter))
             {
                 gameState = GameState.LEVEL_SELECT;
             }
@@ -197,8 +203,8 @@ namespace coolGame
         /// </summary>
         protected void LevelSelectUpdate()
         {
-            //Move to level select screen if player presses spacebar
-            if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+            //Move to level select screen if player presses spaentercebar
+            if (kbState.IsKeyDown(Keys.Enter) && pbState.IsKeyUp(Keys.Enter))
             {
                 gameState = GameState.INGAME_PLAYING;
             }
