@@ -185,8 +185,7 @@ namespace coolGame
         {
             int screenWidth = GraphicsDevice.Viewport.Width;
             int screenHeight = GraphicsDevice.Viewport.Height;
-
-            int titleScalar = screenWidth * 4 / 5;
+            
             int titleWidth = screenWidth * 4 / 5;
             int titleHeight = title.Height * titleWidth / title.Width;
 
@@ -218,7 +217,24 @@ namespace coolGame
         /// </summary>
         protected void LevelSelectDraw()
         {
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
 
+            int l1IconWidth = screenWidth / 6;
+            int l1IconHeight = level1Icon.Height * l1IconWidth / level1Icon.Width;
+            int l1Iconx = screenWidth / 5 - l1IconWidth / 2;
+            int l1Icony = screenHeight / 3 - l1IconHeight / 2;
+
+            spriteBatch.Draw(level1Icon, new Rectangle(l1Iconx, l1Icony, l1IconWidth, l1IconHeight), Color.White);
+
+            int l1TextWidth = screenWidth / 5;
+            int l1TextHeight = level1Text.Height * l1TextWidth / level1Text.Width;
+            // Level 1 select Text is in terms of the icon
+            int l1Textx = l1Iconx + l1IconWidth / 2 - l1TextWidth / 2;  
+            int l1Texty = l1Icony + l1IconHeight;
+
+            spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
+            
         }
     }
 }
