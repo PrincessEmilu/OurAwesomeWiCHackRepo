@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace coolGame
 {
@@ -24,12 +25,14 @@ namespace coolGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
         GameState gameState;
 
         // DRAWING ATTRIBUTES
         Texture2D title;
         Texture2D pressEnterToPlay;
         Texture2D playerTexture;
+        Texture2D enemyTexture;
 
         //Control
         KeyboardState kbState;
@@ -37,6 +40,7 @@ namespace coolGame
 
         //Entities
         Player player;
+        List<Entity> listEntities;
 
         public Game1()
         {
@@ -60,6 +64,7 @@ namespace coolGame
         {
             // TODO: Add your initialization logic here
             this.gameState = GameState.TITLE_SCREEN;
+            listEntities = new List<Entity>();
 
             base.Initialize();
         }
@@ -77,8 +82,16 @@ namespace coolGame
             title = Content.Load<Texture2D>("title");   // loads the title
             pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
             playerTexture = Content.Load<Texture2D>("rabbit");
+            enemyTexture = Content.Load<Texture2D>("enemy");
 
+            //Creates the player
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
+
+            //Adds enemies to the list
+            //The list should probably exist in the scope of game1, but adding enemies will probably be done via level
+            //ANNA I hope you read this :p
+            listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 400, enemyTexture.Width, enemyTexture.Height)));
+
 
         }
 
@@ -120,6 +133,12 @@ namespace coolGame
 
                     //Calls player update logic
                     player.Update(gameTime);
+
+                    //Updates entities; eventually will be done with level's update
+                    foreach(Entity e in listEntities)
+                    {
+                        e.Update(gameTime);
+                    }
                     break;
 
                 case GameState.INGAME_HACKING:
@@ -151,7 +170,16 @@ namespace coolGame
                     break;
 
                 case GameState.INGAME_PLAYING:
+
+                    //Draws player
                     player.Draw(spriteBatch);
+
+                    //Draws entites; eventually handled by level
+                    foreach(Entity e in listEntities)
+                    {
+                        e.Draw(spriteBatch);
+                    }
+                    
                     break;
 
                 case GameState.INGAME_HACKING:
