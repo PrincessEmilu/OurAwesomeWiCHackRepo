@@ -28,6 +28,14 @@ namespace coolGame
 
         // Attributes
         Texture2D title;
+        Texture2D playerTexture;
+
+        //Control
+        KeyboardState kbState;
+        KeyboardState pbState;
+
+        //Entities
+        Player player;
 
         public Game1()
         {
@@ -57,9 +65,14 @@ namespace coolGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+
             title = Content.Load<Texture2D>("title");   // loads the title
 
-            // TODO: use this.Content to load your game content here
+            playerTexture = Content.Load<Texture2D>("player");
+
+            player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), kbState);
+
         }
 
         /// <summary>
@@ -81,17 +94,35 @@ namespace coolGame
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            
 
-            // TODO: Add your update logic here
+            //Updates controls
+            pbState = kbState;
+            kbState = Keyboard.GetState();
+
             switch(gameState)
             {
                 case GameState.TITLE_SCREEN:
                     TitleScreenUpdate();
+
+                    //Move to level select screen if player presses spacebar
+                    if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+                    {
+                        gameState = GameState.LEVEL_SELECT;
+                    }
+
                     break;
                 case GameState.LEVEL_SELECT:
+                    //Move to level select screen if player presses spacebar
+                    if (kbState.IsKeyDown(Keys.Space) && pbState.IsKeyUp(Keys.Space))
+                    {
+                        gameState = GameState.INGAME_PLAYING;
+                    }
                     break;
                 case GameState.INGAME_PLAYING:
+
+                    //Calls player update logic
+                    player.Update(gameTime);
+
                     break;
                 case GameState.INGAME_HACKING:
                     break;
