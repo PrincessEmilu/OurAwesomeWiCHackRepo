@@ -12,7 +12,7 @@ namespace coolGame
     abstract class GameObject
     {
         //Must implement abstract and draw
-        abstract protected void Update(GameTime gameTime);
-        abstract protected void Draw(SpriteBatch spriteBatch);
+        abstract public void Update(GameTime gameTime);
+        abstract public void Draw(SpriteBatch spriteBatch);
     }
 }
