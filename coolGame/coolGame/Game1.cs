@@ -30,6 +30,8 @@ namespace coolGame
         Texture2D title;
         Texture2D pressEnterToPlay;
         Texture2D playerTexture;
+        Texture2D level1Text;
+        Texture2D level1Icon;
 
         //Control
         KeyboardState kbState;
@@ -73,10 +75,11 @@ namespace coolGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-            title = Content.Load<Texture2D>("title");   // loads the title
+            title = Content.Load<Texture2D>("title");
             pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
             playerTexture = Content.Load<Texture2D>("rabbit");
+            level1Icon = Content.Load<Texture2D>("carrot");
+            level1Text = Content.Load<Texture2D>("level1");
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), kbState);
 
