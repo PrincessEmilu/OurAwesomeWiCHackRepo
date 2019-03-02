@@ -260,3 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 /coolGame/coolGame/app.config
+
+#This isn't necessary
+*.csproj
