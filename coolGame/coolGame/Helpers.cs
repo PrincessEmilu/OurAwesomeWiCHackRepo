@@ -13,7 +13,7 @@ namespace coolGame
     {
         public static bool CheckSingleKeyPress (Keys keys, KeyboardState kbState, KeyboardState pbState)
         {
-            return kbState.IsKeyDown(keys) && pbState.IsKeyDown(keys;
+            return kbState.IsKeyDown(keys) && pbState.IsKeyDown(keys);
         }
 
         // TODO: Further Static methods.
