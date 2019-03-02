@@ -14,6 +14,11 @@ namespace coolGame
         // Attributes
         List<Entity> entities;
 
+        private enum EntityTypes
+        {
+            GuardEnemy
+        }
+
         /// <summary>
         /// Constructor that builds a level
         /// from a file.
@@ -40,7 +45,25 @@ namespace coolGame
             String line = fileIn.ReadLine();
             while (line != null)
             {
-                // TODO
+                if (line.Equals("") || line.StartsWith("#"))
+                {
+                    continue;
+                }
+
+                // Make Entity
+                String[] contents = line.Split(',');
+                // Note default size of enemies is 100. Change later. 
+                switch (contents[2])
+                {
+                    case "GuardEnemy":
+                        this.entities.Add(new GuardEnemy(
+                            null, new Rectangle( 
+                                Int32.Parse(contents[0]), 
+                                Int32.Parse(contents[1]), 
+                                100,
+                                100)));
+                        break;
+                }
             }
         }
 
@@ -51,7 +74,10 @@ namespace coolGame
         /// <param name="spriteBatch"></param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            foreach (Entity entity in this.entities)
+            {
+                entity.Draw(spriteBatch);
+            }
         }
 
         /// <summary>
@@ -61,7 +87,10 @@ namespace coolGame
         /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            foreach (Entity entity in this.entities)
+            {
+                entity.Update(gameTime);
+            }
         }
     }
 }
