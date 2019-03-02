@@ -78,7 +78,7 @@ namespace coolGame
             pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
             playerTexture = Content.Load<Texture2D>("rabbit");
 
-            player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), kbState);
+            player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
 
         }
 
