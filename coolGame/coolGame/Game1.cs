@@ -26,7 +26,7 @@ namespace coolGame
         SpriteBatch spriteBatch;
         GameState gameState;
 
-        // Attributes
+        // DRAWING ATTRIBUTES
         Texture2D title;
 
         public Game1()
@@ -114,7 +114,7 @@ namespace coolGame
             switch (gameState)
             {
                 case GameState.TITLE_SCREEN:
-                    spriteBatch.Draw(title, new Rectangle(0, 0, title.Width, title.Height), Color.White);
+                    TitleScreenDraw();
                     break;
                 case GameState.LEVEL_SELECT:
                     break;
@@ -133,6 +133,18 @@ namespace coolGame
         protected void TitleScreenUpdate()
         {
             
+        }
+
+        /// <summary>
+        /// Function responsible for drawing the title screen of the game.
+        /// 
+        /// Draws the title in the genter of the screen, and animates it.
+        /// </summary>
+        protected void TitleScreenDraw()
+        {
+            spriteBatch.Draw(title, new Rectangle(GraphicsDevice.Viewport.Width / 2 - title.Width / 2, 
+                GraphicsDevice.Viewport.Height / 2 - title.Height, 
+                title.Width, title.Height), Color.White);
         }
     }
 }
