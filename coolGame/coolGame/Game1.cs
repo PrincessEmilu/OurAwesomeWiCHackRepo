@@ -81,7 +81,7 @@ namespace coolGame
             level1Icon = Content.Load<Texture2D>("carrot");
             level1Text = Content.Load<Texture2D>("level1");
 
-            player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), kbState);
+            player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
 
         }
 
