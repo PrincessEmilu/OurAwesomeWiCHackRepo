@@ -25,6 +25,7 @@ namespace coolGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
+        Level currentLevel;
 
         // DRAWING ATTRIBUTES
         Texture2D title;
@@ -136,6 +137,9 @@ namespace coolGame
                     //Calls player update logic
                     player.Update(gameTime);
 
+                    // Draw everything on the level
+                    this.currentLevel.Update(gameTime);
+
                     //Eventually do in a list via level
                     testEnemy.Update(gameTime);
 
@@ -172,6 +176,8 @@ namespace coolGame
                 case GameState.INGAME_PLAYING:
                     player.Draw(spriteBatch);
 
+                    this.currentLevel.Draw(spriteBatch);
+                    
                     //TODO: Draw enemies in list via level
                     testEnemy.Draw(spriteBatch);
                     break;
@@ -227,6 +233,7 @@ namespace coolGame
             //Move to level select screen if player presses spaentercebar
             if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
             {
+                this.currentLevel = new Level("LevelStructures/level1.level");
                 gameState = GameState.INGAME_PLAYING;
             }
         }
