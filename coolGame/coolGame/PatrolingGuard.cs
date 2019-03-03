@@ -10,15 +10,16 @@ namespace coolGame
 {
     class PatrolingGuard : HackableEnemy
     {
-
+            
         // Movement
-        const int moveSpeed = 2;
-        const int patrolLength = 800;
-        int amountMoved;
-        bool patrolDirection = true;
 
         public PatrolingGuard(Texture2D texture, Rectangle position)
-            : base(texture, position) { }
+            : base(texture, position)
+        {
+            this.moveSpeed = 2;
+            this.patrolLength = 800;
+            this.currentDirection = PatrolDirection.LEFT;
+        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -27,21 +28,7 @@ namespace coolGame
 
         public override void Update(GameTime gameTime)
         {
-            if (patrolDirection)
-            {
-                position.X += moveSpeed;
-                amountMoved += moveSpeed;
-            }
-            else
-            {
-                position.X -= moveSpeed;
-                amountMoved -= moveSpeed;
-            }
-            if (amountMoved == 0 || 
-                amountMoved == patrolLength)
-            {
-                patrolDirection = !patrolDirection;
-            }
+            Move();
         }
     }
 }
