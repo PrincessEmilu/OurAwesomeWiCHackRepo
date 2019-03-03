@@ -26,8 +26,7 @@ namespace coolGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
-        Level currentLevel;
-
+    
         // DRAWING ATTRIBUTES
         Texture2D title;
         Texture2D pressEnterToPlay;
@@ -44,10 +43,7 @@ namespace coolGame
         KeyboardState pbState;
 
         //Entities
-        Player player
-        {
-            get { return player; }
-        }
+        Player player;
         List<Entity> listEntities;
 
         public Game1()
