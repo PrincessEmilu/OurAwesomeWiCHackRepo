@@ -11,6 +11,16 @@ namespace coolGame
 {
     static class Helpers
     {
+        static string CONTENT_TITLE = "title";
+        static string CONTENT_PRESS_ENTER = "pressEnterToPlay";
+        static string CONTENT_PRESS_ENTER_HIGHLIGHT = "pressEnterToPlayHighlighted";
+        static string CONTENT_RABBIT = "rabbit";
+        static string CONTENT_CARROT = "carrot";
+        static string CONTENT_ENEMY = "enemy";
+        static string CONTENT_LEVEL1 = "level1";
+        static string CONTENT_LEVEL1_HIGHLIGHT = "level1Highlighted";
+        static string CONTENT_ARROW = "arrow";
+
         public static MouseState mouseState;
         public static MouseState lastMouseState;
         public enum MousePressState

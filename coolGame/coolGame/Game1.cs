@@ -281,7 +281,10 @@ namespace coolGame
             
 
             //Move to level select screen if player presses spaentercebar
-            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) || 
+                ((Helpers.IsHovering(l1Textx, l1Texty, l1TextWidth, l1TextHeight) ||
+                Helpers.IsHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight) && 
+                (Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS))))
             {
                 //this.currentLevel = new Level("LevelStructures/level1.level");
                 gameState = GameState.INGAME_PLAYING;
@@ -324,11 +327,7 @@ namespace coolGame
         /// Getters to universalize abailibility.
         /// </summary>
         /// <returns></returns>
-
-        public Player GetPlayer ()
-        {
-            return this.player;
-        }
+        
 
         public Texture2D GetEnemy ()
         {
