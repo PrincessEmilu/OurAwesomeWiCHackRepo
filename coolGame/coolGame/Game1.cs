@@ -37,6 +37,7 @@ namespace coolGame
         Texture2D cursor;
         Texture2D pressEnterToPlayHighlighted;
         Texture2D level1TextHighlighted;
+        Texture2D obstacleTexture;
 
         //Control
         KeyboardState kbState;
@@ -94,6 +95,7 @@ namespace coolGame
             level1Icon = Content.Load<Texture2D>("carrot");
             level1Text = Content.Load<Texture2D>("level1");
             level1TextHighlighted = Content.Load<Texture2D>("level1Highlighted");
+            obstacleTexture = Content.Load<Texture2D>("obstacleTemp");
 
             cursor = Content.Load<Texture2D>("arrow2");
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
@@ -102,6 +104,7 @@ namespace coolGame
 
             //Puts enemies in list; will probably be handled with level later
             listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
+            listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(750, 400, 50, 50)));
         }
 
         /// <summary>
