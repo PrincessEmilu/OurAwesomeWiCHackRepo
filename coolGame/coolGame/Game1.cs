@@ -44,7 +44,10 @@ namespace coolGame
         KeyboardState pbState;
 
         //Entities
-        Player player;
+        Player player
+        {
+            get { return player; }
+        }
         List<Entity> listEntities;
 
         public Game1()
@@ -282,16 +285,6 @@ namespace coolGame
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
             
-        }
-
-        /// <summary>
-        /// Getters to universalize abailibility.
-        /// </summary>
-        /// <returns></returns>
-
-        public Player GetPlayer ()
-        {
-            return this.player;
         }
 
         public Texture2D GetEnemy ()
