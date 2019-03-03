@@ -11,6 +11,10 @@ namespace coolGame
 {
     abstract class Entity : GameObject
     {
+
+        //Can check entitiy positon
+        public Rectangle Position { get { return position; } }
+
         //All entities need a texture and a rectangle
         protected Texture2D texture;
         protected Rectangle position;

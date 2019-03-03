@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace coolGame
 {
@@ -42,6 +43,7 @@ namespace coolGame
 
         //Entities
         Player player;
+        List<Entity> listEntities;
 
         //Placeholder for debug
         GuardEnemy testEnemy;
@@ -70,6 +72,8 @@ namespace coolGame
             this.gameState = GameState.TITLE_SCREEN;
             IsMouseVisible = true;
 
+            listEntities = new List<Entity>();
+
             base.Initialize();
         }
 
@@ -93,7 +97,7 @@ namespace coolGame
             cursor = Content.Load<Texture2D>("arrow2");
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
-            player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
+            player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), listEntities);
             testEnemy = new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player);
 
         }
