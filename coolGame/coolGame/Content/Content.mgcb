@@ -152,11 +152,6 @@
 /processorParam:TextureFormat=Compressed
 /build:SFPixelate.spritefont
 
-#begin SFPixelate.ttf
-/importer:
-/processor:
-/build:SFPixelate.ttf
-
 #begin terminal.png
 /importer:TextureImporter
 /processor:TextureProcessor
