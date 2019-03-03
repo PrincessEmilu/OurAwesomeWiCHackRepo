@@ -189,7 +189,7 @@ namespace coolGame
         protected void TitleScreenUpdate()
         {
             //Move to level select screen if player presses enter
-            if (kbState.IsKeyDown(Keys.Enter) && pbState.IsKeyUp(Keys.Enter))
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
             {
                 gameState = GameState.LEVEL_SELECT;
             }
@@ -225,7 +225,7 @@ namespace coolGame
         protected void LevelSelectUpdate()
         {
             //Move to level select screen if player presses spaentercebar
-            if (kbState.IsKeyDown(Keys.Enter) && pbState.IsKeyUp(Keys.Enter))
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
             {
                 gameState = GameState.INGAME_PLAYING;
             }
