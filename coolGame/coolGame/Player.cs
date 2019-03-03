@@ -103,6 +103,8 @@ namespace coolGame
                 }   
             }
             CheckFutureCollision();
+
+            CheckForFinish();
         }
 
         // Checks for collision
@@ -154,6 +156,23 @@ namespace coolGame
                     throw new DivideByZeroException();
                 }
             }
+        }
+
+        /// <summary>
+        /// Check to see if a specific collision is
+        /// happening with the finish.
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckForFinish()
+        {
+            foreach (Entity entity in listEntities)
+            {
+                if (typeof(Finish).IsInstanceOfType(entity))
+                {
+                    return entity.Position.Intersects(this.Position);
+                }
+            }
+            return false;
         }
 
         // Drawing the player
