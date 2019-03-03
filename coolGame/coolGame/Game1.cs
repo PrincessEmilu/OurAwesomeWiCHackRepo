@@ -69,6 +69,8 @@ namespace coolGame
             // TODO: Add your initialization logic here
             this.gameState = GameState.TITLE_SCREEN;
             IsMouseVisible = true;
+            Helpers.mouseState = Mouse.GetState();
+            Helpers.lastMouseState = Helpers.mouseState;
 
             listEntities = new List<Entity>();
 
@@ -120,7 +122,8 @@ namespace coolGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            Helpers.mouseState = Mouse.GetState();
+            Helpers.lastMouseState = Helpers.mouseState;
 
             //Updates controls
             pbState = kbState;
@@ -197,11 +200,28 @@ namespace coolGame
         /// </summary>
         protected void TitleScreenUpdate()
         {
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+
+            int titleWidth = screenWidth * 4 / 5;
+            int titleHeight = title.Height * titleWidth / title.Width;
+
+            spriteBatch.Draw(title, new Rectangle(screenWidth / 2 - titleWidth / 2,
+                screenHeight / 2 - titleHeight,
+                titleWidth, titleHeight), Color.White);
+
+            int pressEnterWidth = screenWidth / 3;
+            int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
+
             //Move to level select screen if player presses enter
-            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) ||
+                (Helpers.IsHovering(screenWidth / 2 - pressEnterWidth / 2,
+                3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight) && 
+                Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS))
             {
                 gameState = GameState.LEVEL_SELECT;
             }
+
         }
 
         /// <summary>
@@ -224,7 +244,7 @@ namespace coolGame
             int pressEnterWidth = screenWidth / 3;
             int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
 
-            if (Helpers.isHovering(screenWidth / 2 - pressEnterWidth / 2,
+            if (Helpers.IsHovering(screenWidth / 2 - pressEnterWidth / 2,
                 3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight))
             {
                 spriteBatch.Draw(pressEnterToPlayHighlighted, new Rectangle(screenWidth / 2 - pressEnterWidth / 2,
@@ -242,6 +262,23 @@ namespace coolGame
         /// </summary>
         protected void LevelSelectUpdate()
         {
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+
+            int l1IconWidth = screenWidth / 6;
+            int l1IconHeight = level1Icon.Height * l1IconWidth / level1Icon.Width;
+            int l1Iconx = screenWidth / 5 - l1IconWidth / 2;
+            int l1Icony = screenHeight / 3 - l1IconHeight / 2;
+
+            spriteBatch.Draw(level1Icon, new Rectangle(l1Iconx, l1Icony, l1IconWidth, l1IconHeight), Color.White);
+
+            int l1TextWidth = screenWidth / 5;
+            int l1TextHeight = level1Text.Height * l1TextWidth / level1Text.Width;
+            int l1Textx = l1Iconx + l1IconWidth / 2 - l1TextWidth / 2;
+            int l1Texty = l1Icony + l1IconHeight;
+
+            
+
             //Move to level select screen if player presses spaentercebar
             if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
             {
@@ -271,8 +308,8 @@ namespace coolGame
             int l1Textx = l1Iconx + l1IconWidth / 2 - l1TextWidth / 2;  
             int l1Texty = l1Icony + l1IconHeight;
 
-            if (Helpers.isHovering(l1Textx, l1Texty, l1TextWidth, l1TextHeight) || 
-                Helpers.isHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight))
+            if (Helpers.IsHovering(l1Textx, l1Texty, l1TextWidth, l1TextHeight) || 
+                Helpers.IsHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight))
             {
                 spriteBatch.Draw(level1TextHighlighted, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
@@ -280,7 +317,6 @@ namespace coolGame
             {
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
-            
         }
 
         public Texture2D GetEnemy ()
