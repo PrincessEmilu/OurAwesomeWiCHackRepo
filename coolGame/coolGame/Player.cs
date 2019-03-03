@@ -111,7 +111,8 @@ namespace coolGame
             // Loops through list; checks collision
             foreach(Entity e in listEntities)
             {
-                if (e.Position.Intersects(position))
+                if (e.Position.Intersects(position) &&
+                    e.IsCollidible())
                 {
                     return true;
                 }
@@ -151,7 +152,8 @@ namespace coolGame
             {
                 if (CheckCollision())
                 {
-                    throw new DivideByZeroException();
+                    Console.WriteLine("RIP YOU DIED PLEASE HELP ME PLEASE");
+                    System.Environment.Exit(666);
                 }
             }
         }
