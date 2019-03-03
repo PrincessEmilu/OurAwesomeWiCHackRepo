@@ -26,7 +26,7 @@ namespace coolGame
         /// <param name="file">
         ///     File location for the level information.
         /// </param>
-        public Level (String file)
+        public Level (String file, Player player)
         {
             this.entities = new List<Entity>();
             this.BuildLevel(file);
@@ -61,7 +61,8 @@ namespace coolGame
                                 Int32.Parse(contents[0]), 
                                 Int32.Parse(contents[1]), 
                                 100,
-                                100)));
+                                100)),
+                                player);
                         break;
                 }
             }
