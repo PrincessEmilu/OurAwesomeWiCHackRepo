@@ -10,6 +10,8 @@ namespace coolGame
 {
     class PatrolingGuard : HackableEnemy
     {
+        public PatrolingGuard(Texture2D texture, Rectangle position)
+            : base(texture, position) { }
 
         // Movement
         const int moveSpeed = 5;
