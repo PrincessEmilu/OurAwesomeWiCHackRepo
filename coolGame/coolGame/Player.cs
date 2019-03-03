@@ -24,6 +24,7 @@ namespace coolGame
         const int moveSpeed = 6;
         private Direction direction;
         SpriteEffects spriteEffect = SpriteEffects.None;
+        Direction lastDirection;
 
         // Properties for checking player's position
         public int X
@@ -99,8 +100,9 @@ namespace coolGame
                 if (CheckCollision())
                 {
                     position.Y -= moveSpeed;
-                }
+                }   
             }
+            CheckFutureCollision();
         }
 
         // Checks for collision
@@ -115,6 +117,43 @@ namespace coolGame
                 }
             }
             return false;
+        }
+
+        public void CheckFutureCollision ()
+        {
+            bool flag = false;
+            foreach (Entity entity in listEntities)
+            {
+                if (entity.GetFuturePosition().Intersects(this.position))
+                {
+                    List<Object> nextMove = entity.GetNextMovement();
+                    int movement = (int)nextMove.ElementAt(1);
+                    switch ((char) nextMove.ElementAt(0))
+                    {
+                        case ('X'):
+                            this.position.X += movement;
+                            break;
+                        case ('x'):
+                            this.position.X -= movement;
+                            break;
+                        case ('Y'):
+                            this.position.Y += movement;
+                            break;
+                        case ('y'):
+                            this.position.Y -= movement;
+                            break;
+                    }
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag)
+            {
+                if (CheckCollision())
+                {
+                    throw new DivideByZeroException();
+                }
+            }
         }
 
         // Drawing the player
