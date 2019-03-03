@@ -85,6 +85,7 @@ namespace coolGame
                 case (PatrolDirection.RIGHT):
                     return PatrolDirection.LEFT;
             }
+            return initial;
         }
     }
 }
