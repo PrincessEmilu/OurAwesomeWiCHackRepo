@@ -388,7 +388,10 @@ namespace coolGame
         {
             listEntities.Clear();
             SetUpLevelBound();
-            // Add enemies
+
+            listEntities.Add(new Finish(obstacleTexture, new Rectangle(100, 900, 100, 100)));
+
+            // Add interactables
             listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
             listEntities.Add(new PatrolingGuard(enemyTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
         }
