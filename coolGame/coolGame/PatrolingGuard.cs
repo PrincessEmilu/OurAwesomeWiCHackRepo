@@ -13,8 +13,8 @@ namespace coolGame
             
         // Movement
 
-        public PatrolingGuard(Texture2D texture, Rectangle position)
-            : base(texture, position)
+        public PatrolingGuard(Texture2D texture, Texture2D highlight, Rectangle position)
+            : base(texture, highlight, position)
         {
             this.moveSpeed = 2;
             this.patrolLength = 800;
@@ -23,7 +23,14 @@ namespace coolGame
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            if (Helpers.IsHovering(position.Left, position.Top, position.Width, position.Height))
+            {
+                spriteBatch.Draw(highlight, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
+            }
         }
 
         public override void Update(GameTime gameTime)

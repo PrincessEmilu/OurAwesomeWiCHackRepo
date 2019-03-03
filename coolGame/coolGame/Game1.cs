@@ -34,6 +34,7 @@ namespace coolGame
         Texture2D pressEnterToPlay;
         Texture2D playerTexture;
         Texture2D enemyTexture;
+        Texture2D enemyHighlightTexture;
         Texture2D level1Text;
         Texture2D level1Icon;
         Texture2D cursor;
@@ -98,6 +99,7 @@ namespace coolGame
             // Sprites
             playerTexture = Content.Load<Texture2D>("rabbit");
             enemyTexture = Content.Load<Texture2D>("enemy");
+            enemyHighlightTexture = Content.Load<Texture2D>("enemyHighlight");
             obstacleTexture = Content.Load<Texture2D>("obstacleTemp");
             finishTexture = Content.Load<Texture2D>("finishTemp");
             cursor = Content.Load<Texture2D>("arrow2");
@@ -476,8 +478,8 @@ namespace coolGame
             listEntities.Add(new Finish(finishTexture, new Rectangle(1200, 100, 100, 100)));
 
             // Add interactables
-            listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
-            listEntities.Add(new PatrolingGuard(enemyTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
+            listEntities.Add(new GuardEnemy(enemyTexture, enemyHighlightTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
+            listEntities.Add(new PatrolingGuard(enemyTexture, enemyHighlightTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
         }
 
         private void MakeLevel2 ()

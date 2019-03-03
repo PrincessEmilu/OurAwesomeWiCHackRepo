@@ -17,6 +17,7 @@ namespace coolGame
 
         //All entities need a texture and a rectangle
         protected Texture2D texture;
+        protected Texture2D highlight;
         protected Rectangle position;
 
         // Movement information
@@ -39,9 +40,10 @@ namespace coolGame
         }
         protected string acceptableCode;
 
-        public Entity (Texture2D texture, Rectangle position)
+        public Entity (Texture2D texture, Texture2D highlight, Rectangle position)
         {
             this.texture = texture;
+            this.highlight = highlight;
             this.position = position;
             this.moveSpeed = 0;
         }

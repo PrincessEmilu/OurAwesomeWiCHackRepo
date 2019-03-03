@@ -17,6 +17,7 @@ namespace coolGame
         public static string CONTENT_RABBIT = "rabbit";
         public static string CONTENT_CARROT = "carrot";
         public static string CONTENT_ENEMY = "enemy";
+        public static string CONTENT_ENEMY_HIGHLIGHT = "enemyHighlight";
         public static string CONTENT_LEVEL1 = "level1";
         public static string CONTENT_LEVEL1_HIGHLIGHT = "level1Highlighted";
         public static string CONTENT_ARROW = "arrow2";

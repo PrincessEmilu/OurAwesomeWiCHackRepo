@@ -11,7 +11,7 @@ namespace coolGame
     class Obstacle : Entity
     {
         public Obstacle(Texture2D texture, Rectangle position)
-            : base(texture, position) { }
+            : base(texture, texture, position) { }
 
         public override bool CanBeHacked()
         {

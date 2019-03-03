@@ -12,8 +12,8 @@ namespace coolGame
 
     abstract class Enemy : Entity
     {
-        public Enemy(Texture2D texture, Rectangle position)
-            : base(texture, position) { }
+        public Enemy(Texture2D texture, Texture2D highlight, Rectangle position)
+            : base(texture, highlight, position) { }
 
         public override void Update(GameTime gameTime)
         {}
