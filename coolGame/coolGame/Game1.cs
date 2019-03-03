@@ -137,9 +137,6 @@ namespace coolGame
                     //Calls player update logic
                     player.Update(gameTime);
 
-                    // Draw everything on the level
-                    this.currentLevel.Update(gameTime);
-
                     //Eventually do in a list via level
                     testEnemy.Update(gameTime);
 
@@ -176,8 +173,6 @@ namespace coolGame
                 case GameState.INGAME_PLAYING:
                     player.Draw(spriteBatch);
 
-                    this.currentLevel.Draw(spriteBatch);
-                    
                     //TODO: Draw enemies in list via level
                     testEnemy.Draw(spriteBatch);
                     break;
