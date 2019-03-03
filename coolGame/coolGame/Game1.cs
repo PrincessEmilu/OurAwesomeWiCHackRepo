@@ -200,6 +200,19 @@ namespace coolGame
                     break;
 
                 case GameState.INGAME_HACKING:
+
+                    //TODO: Draw enemies in list via level
+                    foreach (Entity e in listEntities)
+                    {
+                        //Draws hackable enemies differently
+                        if (e is HackableEnemy)
+                        {
+                            ((HackableEnemy)e).DrawHack(spriteBatch);
+                        }
+                    }
+
+                    //As of right now, draws like normal.
+                    player.Draw(spriteBatch);
                     break;
             }
             spriteBatch.End();
