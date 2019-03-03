@@ -381,10 +381,10 @@ namespace coolGame
             int screenHeight = GraphicsDevice.Viewport.Height;
 
             int victoryX = (screenWidth / 2) - (victoryText.Width / 2);
-            int victoryY = (screenHeight / 2) + victoryText.Height;
+            int victoryY = (screenHeight / 2) - (screenHeight / 8);
 
             int continueX = (screenWidth / 2) - (continueText.Width / 2);
-            int continueY = (screenHeight / 2) - (screenHeight / 10);
+            int continueY = (screenHeight / 2) + (screenHeight / 8);
 
             spriteBatch.Draw(victoryText,
                 new Rectangle(
@@ -394,13 +394,29 @@ namespace coolGame
                     victoryText.Height),
                 Color.White);
 
-            spriteBatch.Draw(continueText,
-                new Rectangle(
-                    continueX,
-                    continueY,
-                    continueText.Width,
-                    continueText.Height),
-                Color.White);
+            if (Helpers.IsHovering(continueX, continueY, 
+                continueText.Width, continueText.Height))
+            {
+                spriteBatch.Draw(continueText,
+                    new Rectangle(
+                        continueX,
+                        continueY,
+                        continueText.Width,
+                        continueText.Height),
+                    Color.White);
+            }
+            else
+            {
+                spriteBatch.Draw(continueTextHighlight,
+                    new Rectangle(
+                        continueX,
+                        continueY,
+                        continueText.Width,
+                        continueText.Height),
+                    Color.White);
+
+            }
+
         }
 
         protected void VictoryUpdate ()
