@@ -397,7 +397,7 @@ namespace coolGame
             if (Helpers.IsHovering(continueX, continueY, 
                 continueText.Width, continueText.Height))
             {
-                spriteBatch.Draw(continueText,
+                spriteBatch.Draw(continueTextHighlight,
                     new Rectangle(
                         continueX,
                         continueY,
@@ -407,7 +407,7 @@ namespace coolGame
             }
             else
             {
-                spriteBatch.Draw(continueTextHighlight,
+                spriteBatch.Draw(continueText,
                     new Rectangle(
                         continueX,
                         continueY,
