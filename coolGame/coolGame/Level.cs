@@ -14,6 +14,8 @@ namespace coolGame
         // Attributes
         List<Entity> entities;
 
+        Player player;
+
         private enum EntityTypes
         {
             GuardEnemy
@@ -30,6 +32,8 @@ namespace coolGame
         {
             this.entities = new List<Entity>();
             this.BuildLevel(file);
+
+            this.player = player;
         }
 
         /// <summary>
@@ -61,8 +65,8 @@ namespace coolGame
                                 Int32.Parse(contents[0]), 
                                 Int32.Parse(contents[1]), 
                                 100,
-                                100)),
-                                player);
+                                100),
+                            player));
                         break;
                 }
             }

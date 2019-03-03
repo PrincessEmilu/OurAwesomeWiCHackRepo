@@ -33,7 +33,7 @@ namespace coolGame
         {
             base.Update(gameTime);
 
-            //Changes draw effect
+            //Changes draw effect- enemy faces direction of player
             if (player.X < position.X)
             {
                 drawEffect = SpriteEffects.FlipHorizontally;
