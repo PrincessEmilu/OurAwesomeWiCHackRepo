@@ -47,9 +47,6 @@ namespace coolGame
         Player player;
         List<Entity> listEntities;
 
-        //Placeholder for debug
-        GuardEnemy testEnemy;
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -58,7 +55,7 @@ namespace coolGame
             //Changes window size
             graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 1200;   // set this value to the desired height of your window
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             graphics.ApplyChanges();
         }
 
@@ -101,7 +98,9 @@ namespace coolGame
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), listEntities);
-            testEnemy = new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player);
+
+            //Puts enemies in list; will probably be handled with level later
+            listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
 
         }
 
@@ -144,9 +143,10 @@ namespace coolGame
                     //Calls player update logic
                     player.Update(gameTime);
 
-                    //Eventually do in a list via level
-                    testEnemy.Update(gameTime);
-
+                    foreach (Entity e in listEntities)
+                    {
+                        e.Update(gameTime);
+                    }
                     break;
 
                 case GameState.INGAME_HACKING:
@@ -181,7 +181,10 @@ namespace coolGame
                     player.Draw(spriteBatch);
 
                     //TODO: Draw enemies in list via level
-                    testEnemy.Draw(spriteBatch);
+                    foreach(Entity e in listEntities)
+                    {
+                        e.Draw(spriteBatch);
+                    }
                     break;
 
                 case GameState.INGAME_HACKING:
