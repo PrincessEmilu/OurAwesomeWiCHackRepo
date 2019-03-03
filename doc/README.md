@@ -7,4 +7,12 @@ Sarah Strickman
 Emily Horton  
 
 ## Project
-We don't know yet ahhhhhhhh
+
+### World.Hack()
+
+This is a game in which the protagonist has the ability to interact
+with different aspects of the world through the code that represents it.
+
+Moving around a 2-d Top Down environment, the player may bring up an in-game
+text editor, edit the functionality of the game entities, and solve puzzles.
+
