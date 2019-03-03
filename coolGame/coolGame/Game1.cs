@@ -25,6 +25,7 @@ namespace coolGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
+        Level currentLevel;
 
         // DRAWING ATTRIBUTES
         Texture2D title;
@@ -227,6 +228,7 @@ namespace coolGame
             //Move to level select screen if player presses spaentercebar
             if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
             {
+                //this.currentLevel = new Level("LevelStructures/level1.level");
                 gameState = GameState.INGAME_PLAYING;
             }
         }
