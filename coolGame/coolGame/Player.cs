@@ -108,5 +108,11 @@ namespace coolGame
         {
             sb.Draw(texture, position, Color.White);
         }
+
+        public override bool CanBeHacked()
+        {
+            return false;
+        }
+
     }
 }
