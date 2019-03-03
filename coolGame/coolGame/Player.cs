@@ -21,7 +21,6 @@ namespace coolGame
         }
 
         // Movement & Direction
-        const int moveSpeed = 6;
         private Direction direction;
         SpriteEffects spriteEffect = SpriteEffects.None;
         Direction lastDirection;
@@ -41,6 +40,7 @@ namespace coolGame
         {
             // Reference to list of entities
             listEntities = list;
+            this.moveSpeed = 6;
             this.direction = Direction.RIGHT;
         }
 
@@ -179,5 +179,9 @@ namespace coolGame
             return false;
         }
 
+        public override bool IsCollidible()
+        {
+            return true;
+        }
     }
 }
