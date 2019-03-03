@@ -48,6 +48,15 @@ namespace coolGame
             spriteBatch.Draw(texture, position, Color.White);
         }
 
+        /// <summary>
+        /// You can go over these.
+        /// </summary>
+        /// <returns></returns>
+        public override bool IsCollidible()
+        {
+            return false; ;
+        }
+
         public override void Update(GameTime gameTime)
         {
             // Pass
