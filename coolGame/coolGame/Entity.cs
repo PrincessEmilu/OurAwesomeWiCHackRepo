@@ -23,11 +23,8 @@ namespace coolGame
         {
             this.texture = texture;
             this.position = position;
-        }   
-
-        public bool CanBeHacked ()
-        {
-            return false;
         }
+
+        abstract public bool CanBeHacked();
     }
 }
