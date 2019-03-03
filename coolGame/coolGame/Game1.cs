@@ -172,6 +172,7 @@ namespace coolGame
             {
                 case GameState.TITLE_SCREEN:
                     TitleScreenDraw();
+
                     break;
 
                 case GameState.LEVEL_SELECT:
@@ -205,10 +206,7 @@ namespace coolGame
 
             int titleWidth = screenWidth * 4 / 5;
             int titleHeight = title.Height * titleWidth / title.Width;
-
-            spriteBatch.Draw(title, new Rectangle(screenWidth / 2 - titleWidth / 2,
-                screenHeight / 2 - titleHeight,
-                titleWidth, titleHeight), Color.White);
+            
 
             int pressEnterWidth = screenWidth / 3;
             int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
@@ -269,8 +267,6 @@ namespace coolGame
             int l1IconHeight = level1Icon.Height * l1IconWidth / level1Icon.Width;
             int l1Iconx = screenWidth / 5 - l1IconWidth / 2;
             int l1Icony = screenHeight / 3 - l1IconHeight / 2;
-
-            spriteBatch.Draw(level1Icon, new Rectangle(l1Iconx, l1Icony, l1IconWidth, l1IconHeight), Color.White);
 
             int l1TextWidth = screenWidth / 5;
             int l1TextHeight = level1Text.Height * l1TextWidth / level1Text.Width;
