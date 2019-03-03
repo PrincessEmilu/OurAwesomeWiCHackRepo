@@ -26,7 +26,7 @@ namespace coolGame
         /// data class Level Dat Class.
         /// </summary>
         /// <param name="player"></param>
-        public Level (int levelNumber, Player player, Game game)
+        public Level (int levelNumber, Player player, Game1 game)
         {
             this.BuildLevel(levelNumber, game);
             this.player = player;
@@ -39,7 +39,7 @@ namespace coolGame
         /// <param name="levelNumber">
         /// Level number of the class to build from. 
         /// </param>
-        private void BuildLevel (int levelNumber, Game game)
+        private void BuildLevel (int levelNumber, Game1 game)
         {
             switch (levelNumber)
             {
