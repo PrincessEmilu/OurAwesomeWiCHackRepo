@@ -71,5 +71,20 @@ namespace coolGame
                 this.texture.Width,
                 this.texture.Height);
         }
+
+        protected PatrolDirection FlipDirection (PatrolDirection initial)
+        {
+            switch (initial)
+            {
+                case (PatrolDirection.UP):
+                    return PatrolDirection.DOWN;
+                case (PatrolDirection.DOWN):
+                    return PatrolDirection.UP;
+                case (PatrolDirection.LEFT):
+                    return PatrolDirection.RIGHT;
+                case (PatrolDirection.RIGHT):
+                    return PatrolDirection.LEFT;
+            }
+        }
     }
 }
