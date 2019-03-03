@@ -26,8 +26,7 @@ namespace coolGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
-        Level currentLevel;
-
+    
         // DRAWING ATTRIBUTES
         Texture2D title;
         Texture2D pressEnterToPlay;
@@ -318,16 +317,6 @@ namespace coolGame
             {
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
-        }
-
-        /// <summary>
-        /// Getters to universalize abailibility.
-        /// </summary>
-        /// <returns></returns>
-
-        public Player GetPlayer ()
-        {
-            return this.player;
         }
 
         public Texture2D GetEnemy ()
