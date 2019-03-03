@@ -26,6 +26,7 @@ namespace coolGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
+        SpriteFont font;
     
         // DRAWING ATTRIBUTES
         Texture2D title;
@@ -72,6 +73,7 @@ namespace coolGame
             IsMouseVisible = true;
             Helpers.mouseState = Mouse.GetState();
             Helpers.lastMouseState = Helpers.mouseState;
+            font = Content.Load<SpriteFont>("SFPixelate");
 
             listEntities = new List<Entity>();
 
@@ -259,6 +261,8 @@ namespace coolGame
         {
             int screenWidth = GraphicsDevice.Viewport.Width;
             int screenHeight = GraphicsDevice.Viewport.Height;
+
+            spriteBatch.DrawString(font, "This is a test.", new Vector2(0, 0), Color.White);
             
             int titleWidth = screenWidth * 4 / 5;
             int titleHeight = title.Height * titleWidth / title.Width;
