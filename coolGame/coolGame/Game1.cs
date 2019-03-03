@@ -16,6 +16,7 @@ namespace coolGame
        LEVEL_SELECT,    // You are selecting a level in the game
        INGAME_PLAYING,  // You are playing the game, walking around, etc. (PLAYING)
        INGAME_HACKING,  // You are hacking an object/world (PAUSED)
+       VICTORY          // You have beat the specific level.
     }
 
     /// <summary>
@@ -349,11 +350,6 @@ namespace coolGame
             {
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
-        }
-
-        public Texture2D GetEnemy ()
-        {
-            return this.enemyTexture;
         }
 
         /// <summary>
