@@ -11,13 +11,13 @@ namespace coolGame
 {
     class Level1Dat
     {
-        public List<Entity> GetEntities(Game game)
+        public List<Entity> GetEntities(Game1 game)
         {
             List<Entity> entities = new List<Entity>();
             entities.Add(new GuardEnemy(
-                Content.Load<Texture2D>("enemy"),
-                new Microsoft.Xna.Framework.Rectangle(10, 10, 100, 100),
-                null));
+                game.GetEnemy(),
+                new Rectangle(10, 10, 100, 100),
+                game.GetPlayer()));
             return entities;
         }
 
