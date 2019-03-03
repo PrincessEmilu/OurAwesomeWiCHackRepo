@@ -55,7 +55,7 @@ namespace coolGame
             //Changes window size
             graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 1200;   // set this value to the desired height of your window
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
         }
 
@@ -203,6 +203,19 @@ namespace coolGame
                     break;
 
                 case GameState.INGAME_HACKING:
+
+                    //TODO: Draw enemies in list via level
+                    foreach (Entity e in listEntities)
+                    {
+                        //Draws hackable enemies differently
+                        if (e is HackableEnemy)
+                        {
+                            ((HackableEnemy)e).DrawHack(spriteBatch);
+                        }
+                    }
+
+                    //As of right now, draws like normal.
+                    player.Draw(spriteBatch);
                     break;
             }
             spriteBatch.End();
