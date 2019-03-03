@@ -14,6 +14,8 @@ namespace coolGame
         //Fields
         //Draw effect
         protected SpriteEffects drawEffect = SpriteEffects.None;
+        protected string starterCode;
+        protected string acceptableCode;
 
         public HackableEnemy(Texture2D texture, Rectangle position)
         : base(texture, position) { }
@@ -23,9 +25,11 @@ namespace coolGame
             return true;
         }
 
-        public override void Interact()
+        public override void Interact(){}
+
+        public bool AcceptHack (string altered)
         {
-            
+            return altered.Equals(this.acceptableCode);
         }
 
         public void DrawHack(SpriteBatch spriteBatch)
