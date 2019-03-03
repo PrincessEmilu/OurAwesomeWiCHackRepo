@@ -196,8 +196,24 @@ namespace coolGame
         /// </summary>
         protected void TitleScreenUpdate()
         {
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+
+            int titleWidth = screenWidth * 4 / 5;
+            int titleHeight = title.Height * titleWidth / title.Width;
+
+            spriteBatch.Draw(title, new Rectangle(screenWidth / 2 - titleWidth / 2,
+                screenHeight / 2 - titleHeight,
+                titleWidth, titleHeight), Color.White);
+
+            int pressEnterWidth = screenWidth / 3;
+            int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
+
             //Move to level select screen if player presses enter
-            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) ||
+                (Helpers.isHovering(screenWidth / 2 - pressEnterWidth / 2,
+                3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight) && 
+                Mouse.GetState().LeftButton == ButtonState.Pressed))
             {
                 gameState = GameState.LEVEL_SELECT;
             }
@@ -279,7 +295,6 @@ namespace coolGame
             {
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
-            
         }
     }
 }
