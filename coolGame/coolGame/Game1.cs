@@ -428,17 +428,21 @@ namespace coolGame
             int continueY = (screenHeight / 2) + (screenHeight / 8);
 
             if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) ||
-                Helpers.IsHovering(
-                    continueX, 
-                    continueY, 
-                    continueTextHighlight.Width, 
-                    continueTextHighlight.Height))
+                    (new Rectangle(
+                        continueX,
+                        continueY,
+                        continueTextHighlight.Width,
+                        continueTextHighlight.Height).Intersects(new Rectangle(
+                            Mouse.GetState().X, 
+                            Mouse.GetState().Y, 
+                            1, 
+                            1))) && Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 gameState = GameState.INGAME_PLAYING;
                 MakeLevel2();
             }
         }
-
+        
         /// <summary>
         /// Adds obstacles to make sure the player can't go off the screen.
         /// </summary>

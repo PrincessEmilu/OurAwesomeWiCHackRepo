@@ -68,6 +68,12 @@ namespace coolGame
             return entity.Position.Intersects(pos);
         }
 
+        public static bool CheckObjectClick(Rectangle rect)
+        {
+            Rectangle pos = new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1);
+            return rect.Intersects(pos);
+        }
+
         /// <summary>
         /// Checks to see if an entity can be hacked.
         /// </summary>
