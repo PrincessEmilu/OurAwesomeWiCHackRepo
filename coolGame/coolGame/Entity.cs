@@ -41,6 +41,15 @@ namespace coolGame
 
         abstract public bool CanBeHacked();
 
+        /// <summary>
+        /// Calculates the future position
+        /// that an entity would take up after 
+        /// it moves. 
+        /// </summary>
+        /// <returns>
+        /// A new rectangle object
+        /// to test a given position against. 
+        /// </returns>
         public Rectangle GetFuturePosition ()
         {
             switch (currentDirection)
@@ -72,6 +81,16 @@ namespace coolGame
                 this.texture.Height);
         }
 
+        /// <summary>
+        /// Helper method that flips the direction 
+        /// of the patrol in the enum
+        /// </summary>
+        /// <param name="initial">
+        /// Initial direction
+        /// </param>
+        /// <returns>d
+        /// Direction opposite
+        /// </returns>
         protected PatrolDirection FlipDirection (PatrolDirection initial)
         {
             switch (initial)
@@ -86,6 +105,37 @@ namespace coolGame
                     return PatrolDirection.LEFT;
             }
             return initial;
+        }
+
+        /// <summary>
+        /// Method to move an entity on update.
+        /// </summary>
+        protected void Move ()
+        {
+            switch (this.currentDirection)
+            {
+                case (PatrolDirection.UP):
+                    this.position.Y += this.moveSpeed;
+                    this.amountMoved += this.moveSpeed;
+                    break;
+                case (PatrolDirection.DOWN):
+                    this.position.Y -= this.moveSpeed;
+                    this.amountMoved -= this.moveSpeed;
+                    break;
+                case (PatrolDirection.LEFT):
+                    this.position.X += this.moveSpeed;
+                    this.amountMoved += this.moveSpeed;
+                    break;
+                case (PatrolDirection.RIGHT):
+                    this.position.X -= this.moveSpeed;
+                    this.amountMoved -= this.moveSpeed;
+                    break;
+            }
+            if (this.amountMoved == 0 || 
+                this.amountMoved == this.patrolLength)
+            {
+                this.currentDirection = FlipDirection(this.currentDirection);
+            }
         }
     }
 }
