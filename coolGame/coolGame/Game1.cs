@@ -104,9 +104,6 @@ namespace coolGame
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), listEntities);
-
-            //Puts enemies in list; will probably be handled with level later
-            MakeLevel1();
         }
 
         /// <summary>
@@ -153,6 +150,7 @@ namespace coolGame
                     break;
 
                 case GameState.VICTORY:
+                    VictoryUpdate();
                     break;
             }
 
@@ -229,6 +227,7 @@ namespace coolGame
                     break;
 
                 case GameState.VICTORY:
+                    VictoryDraw();
                     break;
             }
             spriteBatch.End();
@@ -321,7 +320,7 @@ namespace coolGame
                 Helpers.IsHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight)) && 
                 Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS))
             {
-                //this.currentLevel = new Level("LevelStructures/level1.level");
+                MakeLevel1();
                 gameState = GameState.INGAME_PLAYING;
             }
 
@@ -362,6 +361,20 @@ namespace coolGame
             else
             {
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
+            }
+        }
+
+        protected void VictoryDraw ()
+        {
+            // Add Text or something?
+        }
+
+        protected void VictoryUpdate ()
+        {
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
+            {
+                gameState = GameState.INGAME_PLAYING;
+                MakeLevel2();
             }
         }
 
