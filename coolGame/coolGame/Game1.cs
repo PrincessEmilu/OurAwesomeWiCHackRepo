@@ -149,6 +149,9 @@ namespace coolGame
 
                 case GameState.INGAME_HACKING:
                     break;
+
+                case GameState.VICTORY:
+                    break;
             }
 
             base.Update(gameTime);
@@ -162,6 +165,11 @@ namespace coolGame
             foreach (Entity e in listEntities)
             {
                 e.Update(gameTime);
+                if (typeof(Finish).IsInstanceOfType(e) &&
+                    e.Position.Intersects(player.Position))
+                {
+                    this.gameState = GameState.VICTORY;
+                }
             }
 
             if (Helpers.CheckHack(listEntities))
@@ -216,6 +224,9 @@ namespace coolGame
 
                     //As of right now, draws like normal.
                     player.Draw(spriteBatch);
+                    break;
+
+                case GameState.VICTORY:
                     break;
             }
             spriteBatch.End();
