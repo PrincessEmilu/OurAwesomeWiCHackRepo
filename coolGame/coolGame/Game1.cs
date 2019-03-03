@@ -286,8 +286,6 @@ namespace coolGame
         {
             int screenWidth = GraphicsDevice.Viewport.Width;
             int screenHeight = GraphicsDevice.Viewport.Height;
-
-            spriteBatch.DrawString(font, "This is a test.", new Vector2(0, 0), Color.White);
             
             int titleWidth = screenWidth * 4 / 5;
             int titleHeight = title.Height * titleWidth / title.Width;
