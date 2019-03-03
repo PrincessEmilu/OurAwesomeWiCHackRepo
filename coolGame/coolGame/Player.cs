@@ -138,10 +138,5 @@ namespace coolGame
             return false;
         }
 
-        public override bool CanBeHacked()
-        {
-            return false;
-        }
-
     }
 }

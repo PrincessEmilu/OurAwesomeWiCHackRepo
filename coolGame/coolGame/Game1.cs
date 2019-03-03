@@ -86,16 +86,16 @@ namespace coolGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            title = Content.Load<Texture2D>("title");
-            pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
-            pressEnterToPlayHighlighted = Content.Load<Texture2D>("pressEnterToPlayHighlighted");
-            playerTexture = Content.Load<Texture2D>("rabbit");
-            enemyTexture = Content.Load<Texture2D>("enemy");
-            level1Icon = Content.Load<Texture2D>("carrot");
-            level1Text = Content.Load<Texture2D>("level1");
-            level1TextHighlighted = Content.Load<Texture2D>("level1Highlighted");
+            title = Content.Load<Texture2D>(Helpers.CONTENT_TITLE);
+            pressEnterToPlay = Content.Load<Texture2D>(Helpers.CONTENT_PRESS_ENTER);
+            pressEnterToPlayHighlighted = Content.Load<Texture2D>(Helpers.CONTENT_PRESS_ENTER_HIGHLIGHT);
+            playerTexture = Content.Load<Texture2D>(Helpers.CONTENT_RABBIT);
+            enemyTexture = Content.Load<Texture2D>(Helpers.CONTENT_ENEMY);
+            level1Icon = Content.Load<Texture2D>(Helpers.CONTENT_CARROT);
+            level1Text = Content.Load<Texture2D>(Helpers.CONTENT_LEVEL1);
+            level1TextHighlighted = Content.Load<Texture2D>(Helpers.CONTENT_LEVEL1_HIGHLIGHT);
 
-            cursor = Content.Load<Texture2D>("arrow2");
+            cursor = Content.Load<Texture2D>(Helpers.CONTENT_ARROW);
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), listEntities);
