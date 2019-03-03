@@ -169,6 +169,25 @@
 /processorParam:TextureFormat=Color
 /build:rabbit.png
 
+#begin SFPixelate.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:SFPixelate.spritefont
+
+#begin terminal.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:terminal.png
+
 #begin title.png
 /importer:TextureImporter
 /processor:TextureProcessor

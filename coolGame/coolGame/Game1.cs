@@ -27,6 +27,7 @@ namespace coolGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
+        SpriteFont font;
     
         // DRAWING ATTRIBUTES
         Texture2D title;
@@ -77,6 +78,7 @@ namespace coolGame
             IsMouseVisible = true;
             Helpers.mouseState = Mouse.GetState();
             Helpers.lastMouseState = Helpers.mouseState;
+            
 
             listEntities = new List<Entity>();
 
@@ -91,6 +93,7 @@ namespace coolGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = Content.Load<SpriteFont>("SFPixelate");
 
             // Sprites
             playerTexture = Content.Load<Texture2D>("rabbit");
