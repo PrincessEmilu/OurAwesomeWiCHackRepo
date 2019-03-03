@@ -82,6 +82,41 @@ namespace coolGame
         }
 
         /// <summary>
+        /// Method that allows another class
+        /// to see what direction this will move in
+        /// not just if there will be an intersection.
+        /// </summary>
+        /// <returns>
+        /// A list with two objects:   
+        /// 1) a character denoting the next
+        /// direction (Y for vertical and X for 
+        /// horizontal with capital / lowercase
+        /// for negative / positive).
+        /// 2) the distance to be moved. 
+        /// </returns>
+        public List<Object> GetNextMovement ()
+        {
+            List<Object> returnVal = new List<object>();
+            switch (this.currentDirection)
+            {
+                case (PatrolDirection.UP):
+                    returnVal.Add('Y');
+                    break;
+                case (PatrolDirection.DOWN):
+                    returnVal.Add('y');
+                    break;
+                case (PatrolDirection.LEFT):
+                    returnVal.Add('X');
+                    break;
+                case (PatrolDirection.RIGHT):
+                    returnVal.Add('x');
+                    break;
+            }
+            returnVal.Add(this.moveSpeed);
+            return returnVal;
+        }
+
+        /// <summary>
         /// Helper method that flips the direction 
         /// of the patrol in the enum
         /// </summary>
