@@ -17,8 +17,8 @@ namespace coolGame
         protected string starterCode;
         protected string acceptableCode;
 
-        public HackableEnemy(Texture2D texture, Rectangle position)
-        : base(texture, position) { }
+        public HackableEnemy(Texture2D texture, Texture2D highlight, Rectangle position)
+        : base(texture, highlight, position) { }
 
         public override bool CanBeHacked ()
         {
@@ -34,7 +34,15 @@ namespace coolGame
 
         public void DrawHack(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.LightBlue, 0, new Vector2(0, 0), drawEffect, 0);
+            
+            if (Helpers.IsHovering(position.Left, position.Top, position.Width, position.Height))
+            {
+                spriteBatch.Draw(highlight, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
+            }
         }
     }
 }

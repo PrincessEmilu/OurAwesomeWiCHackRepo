@@ -22,7 +22,7 @@ namespace coolGame
         /// Location of the object on the screen
         /// </param>
         public Finish (Texture2D texture, Rectangle position) 
-            : base (texture, position) {}
+            : base (texture, texture, position) {}
 
         /// <summary>
         /// The finish just

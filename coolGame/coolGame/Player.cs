@@ -36,7 +36,7 @@ namespace coolGame
         }
 
         public Player(Texture2D texture, Rectangle position, List<Entity> list) 
-            : base(texture, position)
+            : base(texture, texture, position)
         {
             // Reference to list of entities
             listEntities = list;

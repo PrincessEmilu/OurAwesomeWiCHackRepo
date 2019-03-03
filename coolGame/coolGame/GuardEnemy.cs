@@ -14,8 +14,8 @@ namespace coolGame
         //Reference to player
         Player player;
 
-        public GuardEnemy(Texture2D texture, Rectangle position, Player player)
-            :base(texture, position)
+        public GuardEnemy(Texture2D texture, Texture2D textureHighlight, Rectangle position, Player player)
+            :base(texture, textureHighlight, position)
         {
             this.player = player;
         }
@@ -44,7 +44,14 @@ namespace coolGame
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
+            if (Helpers.IsHovering(position.Left, position.Top, position.Width, position.Height))
+            {
+                spriteBatch.Draw(highlight, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
+            }
+            else
+            {
+                spriteBatch.Draw(texture, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
+            }
         }
 
     }
