@@ -40,6 +40,9 @@ namespace coolGame
         Texture2D level1TextHighlighted;
         Texture2D obstacleTexture;
         Texture2D finishTexture;
+        Texture2D victoryText;
+        Texture2D continueText;
+        Texture2D continueTextHighlight;
 
         //Control
         KeyboardState kbState;
@@ -89,16 +92,25 @@ namespace coolGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            title = Content.Load<Texture2D>("title");
-            pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
-            pressEnterToPlayHighlighted = Content.Load<Texture2D>("pressEnterToPlayHighlighted");
+            // Sprite
             playerTexture = Content.Load<Texture2D>("rabbit");
             enemyTexture = Content.Load<Texture2D>("enemy");
-            level1Icon = Content.Load<Texture2D>("carrot");
-            level1Text = Content.Load<Texture2D>("level1");
-            level1TextHighlighted = Content.Load<Texture2D>("level1Highlighted");
             obstacleTexture = Content.Load<Texture2D>("obstacleTemp");
             finishTexture = Content.Load<Texture2D>("finishTemp");
+
+            // Decor
+            level1Icon = Content.Load<Texture2D>("carrot");
+
+            // Text
+            title = Content.Load<Texture2D>("title");
+            victoryText = Content.Load<Texture2D>("Victory");
+            level1Text = Content.Load<Texture2D>("level1");
+            level1TextHighlighted = Content.Load<Texture2D>("level1Highlighted");
+            pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
+            pressEnterToPlayHighlighted = Content.Load<Texture2D>("pressEnterToPlayHighlighted");
+            continueText = Content.Load<Texture2D>("continueText");
+            continueTextHighlight = Content.Load<Texture2D>("continueHighlight");
+
 
             cursor = Content.Load<Texture2D>("arrow2");
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
@@ -418,7 +430,7 @@ namespace coolGame
             SetUpLevelBound();
 
             // Level Finish
-            listEntities.Add(new Finish(finishTexture, new Rectangle(1200, 100, 100, 100)));
+            listEntities.Add(new Finish(finishTexture, new Rectangle(1200, 500, 100, 100)));
 
             // Add interactables
         }
