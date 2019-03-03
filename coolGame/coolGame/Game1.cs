@@ -16,6 +16,7 @@ namespace coolGame
        LEVEL_SELECT,    // You are selecting a level in the game
        INGAME_PLAYING,  // You are playing the game, walking around, etc. (PLAYING)
        INGAME_HACKING,  // You are hacking an object/world (PAUSED)
+       VICTORY          // You have beat the specific level.
     }
 
     /// <summary>
@@ -39,6 +40,7 @@ namespace coolGame
         Texture2D pressEnterToPlayHighlighted;
         Texture2D level1TextHighlighted;
         Texture2D obstacleTexture;
+        Texture2D finishTexture;
 
         //Control
         KeyboardState kbState;
@@ -99,14 +101,12 @@ namespace coolGame
             level1Text = Content.Load<Texture2D>("level1");
             level1TextHighlighted = Content.Load<Texture2D>("level1Highlighted");
             obstacleTexture = Content.Load<Texture2D>("obstacleTemp");
+            finishTexture = Content.Load<Texture2D>("finishTemp");
 
             cursor = Content.Load<Texture2D>("arrow2");
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), listEntities);
-
-            //Puts enemies in list; will probably be handled with level later
-            MakeLevel1();
         }
 
         /// <summary>
@@ -151,6 +151,10 @@ namespace coolGame
 
                 case GameState.INGAME_HACKING:
                     break;
+
+                case GameState.VICTORY:
+                    VictoryUpdate();
+                    break;
             }
 
             base.Update(gameTime);
@@ -164,6 +168,11 @@ namespace coolGame
             foreach (Entity e in listEntities)
             {
                 e.Update(gameTime);
+                if (typeof(Finish).IsInstanceOfType(e) &&
+                    e.Position.Intersects(player.Position))
+                {
+                    this.gameState = GameState.VICTORY;
+                }
             }
 
             if (Helpers.CheckHack(listEntities))
@@ -218,6 +227,10 @@ namespace coolGame
 
                     //As of right now, draws like normal.
                     player.Draw(spriteBatch);
+                    break;
+
+                case GameState.VICTORY:
+                    VictoryDraw();
                     break;
             }
             spriteBatch.End();
@@ -312,7 +325,7 @@ namespace coolGame
                 Helpers.IsHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight)) && 
                 Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS))
             {
-                //this.currentLevel = new Level("LevelStructures/level1.level");
+                MakeLevel1();
                 gameState = GameState.INGAME_PLAYING;
             }
 
@@ -356,9 +369,18 @@ namespace coolGame
             }
         }
 
-        public Texture2D GetEnemy ()
+        protected void VictoryDraw ()
         {
-            return this.enemyTexture;
+            // Add Text or something?
+        }
+
+        protected void VictoryUpdate ()
+        {
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
+            {
+                gameState = GameState.INGAME_PLAYING;
+                MakeLevel2();
+            }
         }
 
         /// <summary>
@@ -386,9 +408,24 @@ namespace coolGame
         {
             listEntities.Clear();
             SetUpLevelBound();
-            // Add enemies
+
+            // Level Finish
+            listEntities.Add(new Finish(finishTexture, new Rectangle(1200, 100, 100, 100)));
+
+            // Add interactables
             listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
             listEntities.Add(new PatrolingGuard(enemyTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
+        }
+
+        private void MakeLevel2 ()
+        {
+            listEntities.Clear();
+            SetUpLevelBound();
+
+            // Level Finish
+            listEntities.Add(new Finish(finishTexture, new Rectangle(1200, 100, 100, 100)));
+
+            // Add interactables
         }
 
     }

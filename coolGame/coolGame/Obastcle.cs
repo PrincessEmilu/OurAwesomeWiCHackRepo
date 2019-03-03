@@ -23,6 +23,11 @@ namespace coolGame
             spriteBatch.Draw(texture, position, Color.White);
         }
 
+        public override bool IsCollidible()
+        {
+            return true;
+        }
+
         public override void Update(GameTime gameTime){}
     }
 }

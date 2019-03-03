@@ -21,7 +21,6 @@ namespace coolGame
         }
 
         // Movement & Direction
-        const int moveSpeed = 6;
         private Direction direction;
         SpriteEffects spriteEffect = SpriteEffects.None;
         Direction lastDirection;
@@ -41,6 +40,7 @@ namespace coolGame
         {
             // Reference to list of entities
             listEntities = list;
+            this.moveSpeed = 6;
             this.direction = Direction.RIGHT;
         }
 
@@ -111,7 +111,8 @@ namespace coolGame
             // Loops through list; checks collision
             foreach(Entity e in listEntities)
             {
-                if (e.Position.Intersects(position))
+                if (e.Position.Intersects(position) &&
+                    e.IsCollidible())
                 {
                     return true;
                 }
@@ -151,7 +152,8 @@ namespace coolGame
             {
                 if (CheckCollision())
                 {
-                    throw new DivideByZeroException();
+                    Console.WriteLine("RIP YOU DIED PLEASE HELP ME PLEASE");
+                    System.Environment.Exit(666);
                 }
             }
         }
@@ -177,5 +179,9 @@ namespace coolGame
             return false;
         }
 
+        public override bool IsCollidible()
+        {
+            return true;
+        }
     }
 }

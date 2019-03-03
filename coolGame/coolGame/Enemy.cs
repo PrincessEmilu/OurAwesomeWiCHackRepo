@@ -16,12 +16,20 @@ namespace coolGame
             : base(texture, position) { }
 
         public override void Update(GameTime gameTime)
-        {
-            
-        }
+        {}
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, Color.White);
+        }
+
+        /// <summary>
+        /// All the enemies are collidible
+        /// </summary>
+        /// <returns></returns>
+        public override bool IsCollidible()
+        {
+            return true;
         }
 
         public abstract void Interact();

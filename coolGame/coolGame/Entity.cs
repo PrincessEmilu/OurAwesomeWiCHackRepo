@@ -41,6 +41,8 @@ namespace coolGame
 
         abstract public bool CanBeHacked();
 
+        abstract public bool IsCollidible();
+
         /// <summary>
         /// Calculates the future position
         /// that an entity would take up after 
