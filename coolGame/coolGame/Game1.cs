@@ -55,7 +55,7 @@ namespace coolGame
             //Changes window size
             graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
             graphics.PreferredBackBufferHeight = 1200;   // set this value to the desired height of your window
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
         }
 
