@@ -73,7 +73,7 @@ namespace coolGame
             IsMouseVisible = true;
             Helpers.mouseState = Mouse.GetState();
             Helpers.lastMouseState = Helpers.mouseState;
-            font = Content.Load<SpriteFont>("SFPixelate");
+            
 
             listEntities = new List<Entity>();
 
@@ -88,6 +88,7 @@ namespace coolGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = Content.Load<SpriteFont>("SFPixelate");
 
             title = Content.Load<Texture2D>("title");
             pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
