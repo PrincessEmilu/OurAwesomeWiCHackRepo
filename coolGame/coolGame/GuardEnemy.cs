@@ -15,6 +15,7 @@ namespace coolGame
         {
 
         }
+
         //Hacking
         public override void Interact()
         {

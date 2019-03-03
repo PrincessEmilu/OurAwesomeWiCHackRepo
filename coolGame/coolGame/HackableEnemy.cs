@@ -11,10 +11,12 @@ namespace coolGame
 {
     class HackableEnemy : Enemy
     {
+        //Fields
+
+        protected bool hasBeenHacked;
+
         public HackableEnemy(Texture2D texture, Rectangle position)
         : base(texture, position) { }
-
-        private bool hasBeenHacked;
 
         public override void Interact()
         {

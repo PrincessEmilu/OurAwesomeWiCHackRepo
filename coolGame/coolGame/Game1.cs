@@ -30,6 +30,7 @@ namespace coolGame
         Texture2D title;
         Texture2D pressEnterToPlay;
         Texture2D playerTexture;
+        Texture2D enemyTexture;
         Texture2D level1Text;
         Texture2D level1Icon;
         Texture2D cursor;
@@ -40,6 +41,9 @@ namespace coolGame
 
         //Entities
         Player player;
+
+        //Placeholder for debug
+        GuardEnemy testEnemy;
 
         public Game1()
         {
@@ -80,13 +84,16 @@ namespace coolGame
             title = Content.Load<Texture2D>("title");
             pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
             playerTexture = Content.Load<Texture2D>("rabbit");
+            enemyTexture = Content.Load<Texture2D>("enemy");
             level1Icon = Content.Load<Texture2D>("carrot");
             level1Text = Content.Load<Texture2D>("level1");
+
 
             cursor = Content.Load<Texture2D>("arrow2");
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
+            testEnemy = new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height));
 
         }
 
@@ -128,6 +135,10 @@ namespace coolGame
 
                     //Calls player update logic
                     player.Update(gameTime);
+
+                    //Eventually do in a list via level
+                    testEnemy.Update(gameTime);
+
                     break;
 
                 case GameState.INGAME_HACKING:
@@ -147,7 +158,7 @@ namespace coolGame
 
             spriteBatch.Begin();
 
-            // TODO: Add your drawing code here
+            //Stuff to draw based on game state
             switch (gameState)
             {
                 case GameState.TITLE_SCREEN:
@@ -160,6 +171,9 @@ namespace coolGame
 
                 case GameState.INGAME_PLAYING:
                     player.Draw(spriteBatch);
+
+                    //TODO: Draw enemies in list via level
+                    testEnemy.Draw(spriteBatch);
                     break;
 
                 case GameState.INGAME_HACKING:
