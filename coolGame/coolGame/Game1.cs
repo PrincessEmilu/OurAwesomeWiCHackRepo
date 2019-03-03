@@ -295,7 +295,7 @@ namespace coolGame
             return this.player;
         }
 
-        public Texture2D getEnemy ()
+        public Texture2D GetEnemy ()
         {
             return this.enemyTexture;
         }
