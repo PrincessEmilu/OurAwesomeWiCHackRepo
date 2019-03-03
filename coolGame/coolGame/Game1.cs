@@ -421,7 +421,18 @@ namespace coolGame
 
         protected void VictoryUpdate ()
         {
-            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+
+            int continueX = (screenWidth / 2) - (continueText.Width / 2);
+            int continueY = (screenHeight / 2) + (screenHeight / 8);
+
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) ||
+                Helpers.IsHovering(
+                    continueX, 
+                    continueY, 
+                    continueTextHighlight.Width, 
+                    continueTextHighlight.Height))
             {
                 gameState = GameState.INGAME_PLAYING;
                 MakeLevel2();
