@@ -141,14 +141,7 @@ namespace coolGame
                     break;
 
                 case GameState.INGAME_PLAYING:
-
-                    //Calls player update logic
-                    player.Update(gameTime);
-
-                    foreach (Entity e in listEntities)
-                    {
-                        e.Update(gameTime);
-                    }
+                    InGameUpdate(gameTime);
                     break;
 
                 case GameState.INGAME_HACKING:
@@ -156,6 +149,22 @@ namespace coolGame
             }
 
             base.Update(gameTime);
+        }
+
+        protected void InGameUpdate (GameTime gameTime)
+        {
+            //Calls player update logic
+            player.Update(gameTime);
+
+            foreach (Entity e in listEntities)
+            {
+                e.Update(gameTime);
+            }
+
+            if (Helpers.CheckHack(listEntities))
+            {
+                this.gameState = GameState.INGAME_HACKING;
+            }
         }
 
         /// <summary>
