@@ -101,7 +101,6 @@ namespace coolGame
 
             //Puts enemies in list; will probably be handled with level later
             listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
-
         }
 
         /// <summary>
