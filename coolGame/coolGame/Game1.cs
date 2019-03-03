@@ -36,6 +36,8 @@ namespace coolGame
         Texture2D level1Text;
         Texture2D level1Icon;
         Texture2D cursor;
+        Texture2D pressEnterToPlayHighlighted;
+        Texture2D level1TextHighlighted;
 
         //Control
         KeyboardState kbState;
@@ -85,11 +87,12 @@ namespace coolGame
 
             title = Content.Load<Texture2D>("title");
             pressEnterToPlay = Content.Load<Texture2D>("pressEnterToPlay");
+            pressEnterToPlayHighlighted = Content.Load<Texture2D>("pressEnterToPlayHighlighted");
             playerTexture = Content.Load<Texture2D>("rabbit");
             enemyTexture = Content.Load<Texture2D>("enemy");
             level1Icon = Content.Load<Texture2D>("carrot");
             level1Text = Content.Load<Texture2D>("level1");
-
+            level1TextHighlighted = Content.Load<Texture2D>("level1Highlighted");
 
             cursor = Content.Load<Texture2D>("arrow2");
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
@@ -223,8 +226,17 @@ namespace coolGame
             int pressEnterWidth = screenWidth / 3;
             int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
 
-            spriteBatch.Draw(pressEnterToPlay, new Rectangle(screenWidth / 2 - pressEnterWidth / 2, 
-                3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight), Color.White);
+            if (Helpers.isHovering(screenWidth / 2 - pressEnterWidth / 2,
+                3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight))
+            {
+                spriteBatch.Draw(pressEnterToPlayHighlighted, new Rectangle(screenWidth / 2 - pressEnterWidth / 2,
+                    3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight), Color.White);
+            }
+            else
+            {
+                spriteBatch.Draw(pressEnterToPlay, new Rectangle(screenWidth / 2 - pressEnterWidth / 2,
+                    3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight), Color.White);
+            }
         }
 
         /// <summary>
@@ -261,7 +273,16 @@ namespace coolGame
             int l1Textx = l1Iconx + l1IconWidth / 2 - l1TextWidth / 2;  
             int l1Texty = l1Icony + l1IconHeight;
 
-            spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
+            if (Helpers.isHovering(l1Textx, l1Texty, l1TextWidth, l1TextHeight) || 
+                Helpers.isHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight))
+            {
+                spriteBatch.Draw(level1TextHighlighted, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
+            }
+            else
+            {
+                spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
+            }
+            
         }
     }
 }

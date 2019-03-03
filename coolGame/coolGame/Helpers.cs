@@ -18,5 +18,13 @@ namespace coolGame
 
         // TODO: Further Static methods.
 
+            /// <summary>
+            /// Is the mouse hovering over a certain rextangle?
+            /// <returns></returns>
+        public static bool isHovering(int x, int y, int width, int height)
+        {
+            return (Mouse.GetState().X >= x && Mouse.GetState().X <= (x + width) &&
+                Mouse.GetState().Y >= y && Mouse.GetState().Y <= (y + height));
+        }
     }
 }

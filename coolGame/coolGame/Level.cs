@@ -22,53 +22,30 @@ namespace coolGame
         }
 
         /// <summary>
-        /// Constructor that builds a level
-        /// from a file.
+        /// Constructs the level based on 
+        /// data class Level Dat Class.
         /// </summary>
-        /// <param name="file">
-        ///     File location for the level information.
-        /// </param>
-        public Level (String file, Player player)
+        /// <param name="player"></param>
+        public Level (int levelNumber, Player player)
         {
-            this.entities = new List<Entity>();
-            this.BuildLevel(file);
-
+            this.BuildLevel(levelNumber);
             this.player = player;
         }
 
         /// <summary>
-        ///     Builds the level from the file.
+        /// Gets the entities and background from 
+        /// the dummy level dat class.
         /// </summary>
-        /// <param name="file"></param>
-        private void BuildLevel (String file)
+        /// <param name="levelNumber">
+        /// Level number of the class to build from. 
+        /// </param>
+        private void BuildLevel (int levelNumber)
         {
-            TextReader fileIn = new StreamReader(
-                new BufferedStream( 
-                    new FileStream ( file, FileMode.Open, FileAccess.Read)), 
-                Encoding.UTF8);
-            String line = fileIn.ReadLine();
-            while (line != null)
+            switch (levelNumber)
             {
-                if (line.Equals("") || line.StartsWith("#"))
-                {
-                    continue;
-                }
-
-                // Make Entity
-                String[] contents = line.Split(',');
-                // Note default size of enemies is 100. Change later. 
-                switch (contents[2])
-                {
-                    case "GuardEnemy":
-                        this.entities.Add(new GuardEnemy(
-                            null, new Rectangle( 
-                                Int32.Parse(contents[0]), 
-                                Int32.Parse(contents[1]), 
-                                100,
-                                100),
-                                player));
-                        break;
-                }
+                case (1):
+                    this.entities = new Level1Dat().GetEntities();
+                    break;
             }
         }
 
