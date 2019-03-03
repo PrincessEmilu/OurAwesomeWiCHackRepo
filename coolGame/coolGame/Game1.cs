@@ -360,7 +360,10 @@ namespace coolGame
             return this.enemyTexture;
         }
 
-        private void MakeLevel1 ()
+        /// <summary>
+        /// Adds obstacles to make sure the player can't go off the screen.
+        /// </summary>
+        private void SetUpLevelBound()
         {
             // Obstacles
             int screenWidth = GraphicsDevice.Viewport.Width;
@@ -373,8 +376,16 @@ namespace coolGame
             listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(0, 0, screenWidth, 1)));
             // Bottom
             listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(0, screenHeight, screenWidth, 1)));
+        }
 
-            // Enemies
+        /// <summary>
+        /// Method that generates level 1
+        /// </summary>
+        private void MakeLevel1 ()
+        {
+            listEntities.Clear();
+            SetUpLevelBound();
+            // Add enemies
             listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
             listEntities.Add(new PatrolingGuard(enemyTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
         }
