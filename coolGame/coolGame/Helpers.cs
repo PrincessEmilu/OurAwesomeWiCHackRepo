@@ -74,7 +74,10 @@ namespace coolGame
             {
                 if (CheckHackSignle(entity))
                 {
-                    return entity.CanBeHacked();
+                    if (entity.CanBeHacked())
+                    {
+                        return Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS;
+                    }
                 }
             }
             return false;
