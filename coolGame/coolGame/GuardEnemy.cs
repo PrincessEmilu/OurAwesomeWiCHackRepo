@@ -47,10 +47,5 @@ namespace coolGame
             spriteBatch.Draw(texture, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
         }
 
-        public void DrawHack(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(texture, position, null, Color.LightBlue, 0, new Vector2(0, 0), drawEffect, 0);
-        }
-
     }
 }
