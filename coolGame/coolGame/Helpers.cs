@@ -61,5 +61,24 @@ namespace coolGame
                 lastMouseState.LeftButton == ButtonState.Pressed) return MousePressState.RELEASE;
             return MousePressState.NONE;
         }
+
+        public static bool CheckHackSignle(Entity entity)
+        {
+            Rectangle pos = new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1);
+            return entity.Position.Intersects(pos);
+        }
+
+        public static bool CheckHack (List<Entity> entities)
+        {
+            foreach (Entity entity in entities)
+            {
+                if (CheckHackSignle(entity))
+                {
+                    return entity.CanBeHacked();
+                }
+            }
+            return false;
+        }
+
     }
 }
