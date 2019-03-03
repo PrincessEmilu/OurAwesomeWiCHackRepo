@@ -66,7 +66,7 @@ namespace coolGame
                                 Int32.Parse(contents[1]), 
                                 100,
                                 100),
-                            player));
+                                player));
                         break;
                 }
             }
