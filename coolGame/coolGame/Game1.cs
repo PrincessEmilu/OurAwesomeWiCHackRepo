@@ -122,8 +122,9 @@ namespace coolGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            Helpers.mouseState = Mouse.GetState();
             Helpers.lastMouseState = Helpers.mouseState;
+            Helpers.mouseState = Mouse.GetState();
+            
 
             //Updates controls
             pbState = kbState;
@@ -211,14 +212,17 @@ namespace coolGame
             int pressEnterWidth = screenWidth / 3;
             int pressEnterHeight = pressEnterToPlay.Height * pressEnterWidth / pressEnterToPlay.Width;
 
-            //Move to level select screen if player presses enter
-            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) ||
-                (Helpers.IsHovering(screenWidth / 2 - pressEnterWidth / 2,
-                3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight) && 
-                Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS))
+            // Move to level select screen if player presses enter
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
             {
                 gameState = GameState.LEVEL_SELECT;
             }
+
+            // Move to level select screen if player clicks the text
+            if (Helpers.IsHovering(screenWidth / 2 - pressEnterWidth / 2,
+                3 * screenHeight / 5 - pressEnterHeight / 2, pressEnterWidth, pressEnterHeight) &&
+                Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS)
+            { gameState = GameState.LEVEL_SELECT; }
 
         }
 
@@ -273,12 +277,20 @@ namespace coolGame
             int l1Textx = l1Iconx + l1IconWidth / 2 - l1TextWidth / 2;
             int l1Texty = l1Icony + l1IconHeight;
 
-            
-
             //Move to level select screen if player presses spaentercebar
-            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) ||
+                ((Helpers.IsHovering(l1Textx, l1Texty, l1TextWidth, l1TextHeight) ||
+                Helpers.IsHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight)) && 
+                Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS))
             {
                 //this.currentLevel = new Level("LevelStructures/level1.level");
+                gameState = GameState.INGAME_PLAYING;
+            }
+
+            if ((Helpers.IsHovering(l1Textx, l1Texty, l1TextWidth, l1TextHeight) ||
+                Helpers.IsHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight)) &&
+                Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS)
+            {
                 gameState = GameState.INGAME_PLAYING;
             }
         }
