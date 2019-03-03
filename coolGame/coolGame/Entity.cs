@@ -33,6 +33,13 @@ namespace coolGame
         }
         protected PatrolDirection currentDirection;
 
+        // Code Information
+        public string starterCode
+        {
+            get { return starterCode; }
+        }
+        protected string acceptableCode;
+
         public Entity (Texture2D texture, Texture2D highlight, Rectangle position)
         {
             this.texture = texture;
