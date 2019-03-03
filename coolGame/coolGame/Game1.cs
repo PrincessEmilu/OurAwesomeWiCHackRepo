@@ -26,8 +26,7 @@ namespace coolGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         GameState gameState;
-        Level currentLevel;
-
+    
         // DRAWING ATTRIBUTES
         Texture2D title;
         Texture2D pressEnterToPlay;
@@ -281,10 +280,7 @@ namespace coolGame
             
 
             //Move to level select screen if player presses spaentercebar
-            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState) || 
-                ((Helpers.IsHovering(l1Textx, l1Texty, l1TextWidth, l1TextHeight) ||
-                Helpers.IsHovering(l1Iconx, l1Icony, l1IconWidth, l1IconHeight) && 
-                (Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS))))
+            if (Helpers.CheckSingleKeyPress(Keys.Enter, kbState, pbState))
             {
                 //this.currentLevel = new Level("LevelStructures/level1.level");
                 gameState = GameState.INGAME_PLAYING;
@@ -322,12 +318,6 @@ namespace coolGame
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
         }
-
-        /// <summary>
-        /// Getters to universalize abailibility.
-        /// </summary>
-        /// <returns></returns>
-        
 
         public Texture2D GetEnemy ()
         {
