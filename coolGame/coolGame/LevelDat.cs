@@ -15,6 +15,6 @@ namespace coolGame
         List<String> entities;
         String background;
 
-        abstract public void GetData();
+        abstract static public void GetData();
     }
 }
