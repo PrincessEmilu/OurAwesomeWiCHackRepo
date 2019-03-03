@@ -14,7 +14,17 @@ namespace coolGame
         //Fields
 
         //Movement
-        const int moveSpeed = 5;
+        const int moveSpeed = 6;
+
+        //Properties for checking player's position
+        public int X
+        {
+            get { return position.X; }
+        }
+        public int Y
+        {
+            get { return position.Y; }
+        }
 
         public Player(Texture2D texture, Rectangle position) 
             : base(texture, position) { }

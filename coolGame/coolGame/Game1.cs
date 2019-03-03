@@ -93,7 +93,7 @@ namespace coolGame
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height));
-            testEnemy = new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height));
+            testEnemy = new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player);
 
         }
 

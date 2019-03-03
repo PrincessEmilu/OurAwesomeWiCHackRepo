@@ -10,10 +10,16 @@ namespace coolGame
 {
     class GuardEnemy : HackableEnemy
     {
-        public GuardEnemy(Texture2D texture, Rectangle position)
+        //Draw effect
+        SpriteEffects drawEffect = SpriteEffects.None;
+
+        //Reference to player
+        Player player;
+
+        public GuardEnemy(Texture2D texture, Rectangle position, Player player)
             :base(texture, position)
         {
-
+            this.player = player;
         }
 
         //Hacking
@@ -26,10 +32,21 @@ namespace coolGame
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            //Changes draw effect
+            if (player.X < position.X)
+            {
+                drawEffect = SpriteEffects.FlipHorizontally;
+            }
+            else
+            {
+                drawEffect = SpriteEffects.None;
+            }
+
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            spriteBatch.Draw(texture, position, null, Color.White, 0, new Vector2(0, 0), drawEffect, 0);
         }
 
     }
