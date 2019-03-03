@@ -49,6 +49,18 @@
 /processorParam:TextureFormat=Color
 /build:enemy.png
 
+#begin finishTemp.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:finishTemp.png
+
 #begin level1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -132,18 +144,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:rabbit.png
-
-#begin Test.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Test.png;finishTemp.png
 
 #begin title.png
 /importer:TextureImporter
