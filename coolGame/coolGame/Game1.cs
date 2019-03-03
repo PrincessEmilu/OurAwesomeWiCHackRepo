@@ -92,11 +92,12 @@ namespace coolGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // Sprite
+            // Sprites
             playerTexture = Content.Load<Texture2D>("rabbit");
             enemyTexture = Content.Load<Texture2D>("enemy");
             obstacleTexture = Content.Load<Texture2D>("obstacleTemp");
             finishTexture = Content.Load<Texture2D>("finishTemp");
+            cursor = Content.Load<Texture2D>("arrow2");
 
             // Decor
             level1Icon = Content.Load<Texture2D>("carrot");
@@ -110,9 +111,7 @@ namespace coolGame
             pressEnterToPlayHighlighted = Content.Load<Texture2D>("pressEnterToPlayHighlighted");
             continueText = Content.Load<Texture2D>("continueText");
             continueTextHighlight = Content.Load<Texture2D>("continueHighlight");
-
-
-            cursor = Content.Load<Texture2D>("arrow2");
+            
             Mouse.SetCursor(MouseCursor.FromTexture2D(cursor, 0, 0));
 
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), listEntities);
@@ -378,7 +377,30 @@ namespace coolGame
 
         protected void VictoryDraw ()
         {
-            // Add Text or something?
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+
+            int victoryX = (screenWidth / 2) - (victoryText.Width / 2);
+            int victoryY = (screenHeight / 2) + victoryText.Height;
+
+            int continueX = (screenWidth / 2) - (continueText.Width / 2);
+            int continueY = (screenHeight / 2) - (screenHeight / 10);
+
+            spriteBatch.Draw(victoryText,
+                new Rectangle(
+                    victoryX, 
+                    victoryY, 
+                    victoryText.Width, 
+                    victoryText.Height),
+                Color.White);
+
+            spriteBatch.Draw(continueText,
+                new Rectangle(
+                    continueX,
+                    continueY,
+                    continueText.Width,
+                    continueText.Height),
+                Color.White);
         }
 
         protected void VictoryUpdate ()
