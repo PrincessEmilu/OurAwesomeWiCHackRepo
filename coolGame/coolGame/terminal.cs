@@ -13,12 +13,15 @@ namespace coolGame
 
         //Attributes
         Texture2D view;
-        List<string> code;
+        string code;
+        Entity hackee;
+    
 
-        public Terminal (Texture2D view, List<string> code)
+        public Terminal (Texture2D view, Entity hackee)
         {
             this.view = view;
-            this.code = code;
+            this.hackee = hackee;
+            this.code = hackee.starterCode;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
