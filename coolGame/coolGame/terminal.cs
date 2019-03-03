@@ -87,23 +87,26 @@ namespace coolGame
                 counter++;
                 charAt = this.code.ElementAt(searcherIndex);
             }
+            // End if you reached the top of the file
             if (searcherIndex == 0)
             {
                 this.cursorIndex = searcherIndex;
                 return;
             }
-            // Reset
-            searcherIndex = this.cursorIndex;
-            charAt = this.code.ElementAt(searcherIndex);
-            // Search forward for newline
-            while (charAt != '\n' && searcherIndex <= this.code.Count)
+            // Navigate back up to the line above
+            while ( charAt != '\n' && searcherIndex > 0 )
             {
-                searcherIndex++;
+                searcherIndex--;
                 charAt = this.code.ElementAt(searcherIndex);
             }
-            // Search forward for the next line, but make sure that
-            // you don't go past end of the list or hit a newline. 
-            while (charAt != '\n' && searcherIndex <= this.code.Count && counter > 0)
+            // End if you reached the top of the file
+            if (searcherIndex == 0)
+            {
+                this.cursorIndex = searcherIndex;
+                return;
+            }
+            // Navigate forward to find where you should atually go.
+            while (charAt != '\n' && counter > 0)
             {
                 searcherIndex++;
                 counter--;
