@@ -49,7 +49,7 @@ namespace coolGame
                 //Stop player from walking into collidable object
                 if (CheckCollision())
                 {
-                    position.X -= 1;
+                    position.X -= moveSpeed;
                 }
             }
 
@@ -61,7 +61,7 @@ namespace coolGame
                 //Stop player from walking into collidable object
                 if (CheckCollision())
                 {
-                    position.X += 1;
+                    position.X += moveSpeed;
                 }
             }
 
@@ -73,7 +73,7 @@ namespace coolGame
                 //Stop player from walking into collidable object
                 if (CheckCollision())
                 {
-                    position.Y += 1;
+                    position.Y += moveSpeed;
                 }
             }
 
@@ -85,7 +85,7 @@ namespace coolGame
                 //Stop player from walking into collidable object
                 if (CheckCollision())
                 {
-                    position.Y -= 1;
+                    position.Y -= moveSpeed;
                 }
             }
         }

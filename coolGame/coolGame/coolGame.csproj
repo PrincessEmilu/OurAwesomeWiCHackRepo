@@ -50,6 +50,7 @@
     <Compile Include="HackableEnemy.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="Level1Dat.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
