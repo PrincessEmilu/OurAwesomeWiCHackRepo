@@ -62,7 +62,7 @@ namespace coolGame
             return MousePressState.NONE;
         }
 
-        public static bool CheckHackSignle(Entity entity)
+        public static bool CheckHackSingle(Entity entity)
         {
             Rectangle pos = new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1);
             return entity.Position.Intersects(pos);
@@ -72,7 +72,7 @@ namespace coolGame
         {
             foreach (Entity entity in entities)
             {
-                if (CheckHackSignle(entity))
+                if (CheckHackSingle(entity))
                 {
                     return entity.CanBeHacked();
                 }
