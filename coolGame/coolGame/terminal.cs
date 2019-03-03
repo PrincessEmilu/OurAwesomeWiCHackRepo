@@ -13,15 +13,18 @@ namespace coolGame
 
         //Attributes
         Texture2D view;
-        string code;
         Entity hackee;
-    
+        List<char> code;
+        char holder;
+        int cursorIndex;
 
         public Terminal (Texture2D view, Entity hackee)
         {
             this.view = view;
             this.hackee = hackee;
-            this.code = hackee.starterCode;
+            this.code = new List<char>(hackee.starterCode.ToCharArray());
+            this.cursorIndex = 0;
+            this.holder = code.ElementAt(cursorIndex);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -38,6 +41,43 @@ namespace coolGame
         public override void Update(GameTime gameTime)
         {
             throw new NotImplementedException();
+        }
+
+        public void MoveUpLine ()
+        {
+            int searcherIndex = this.cursorIndex;
+            int counter = 0;
+            char charAt = this.code.ElementAt(searcherIndex);
+            // Search backward for last newline or the begginning
+            while (charAt != '\n' && searcherIndex > 0)
+            {
+                searcherIndex--;
+                counter++;
+                charAt = this.code.ElementAt(searcherIndex);
+            }
+            // Reset
+            searcherIndex = this.cursorIndex;
+            charAt = this.code.ElementAt(searcherIndex);
+            // Search forward for newline
+            while (charAt != '\n' && searcherIndex <= this.code.Count)
+            {
+                searcherIndex++;
+                charAt = this.code.ElementAt(searcherIndex);
+            }
+            // Search forward for the next line, but make sure that
+            // you don't go past end of the list or hit a newline. 
+            while (charAt != '\n' && searcherIndex <= this.code.Count && counter > 0)
+            {
+                searcherIndex++;
+                counter--;
+                charAt = this.code.ElementAt(searcherIndex);
+            }
+            this.cursorIndex = searcherIndex;
+        }
+
+        public void MoveCursor ()
+        {
+            
         }
     }
 }
