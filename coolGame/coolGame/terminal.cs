@@ -10,6 +10,17 @@ namespace coolGame
 {
     class Terminal : GameObject
     {
+
+        //Attributes
+        Texture2D view;
+        String code;
+
+        public Terminal (Texture2D view, String code)
+        {
+            this.view = view;
+            this.code = code;
+        }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             throw new NotImplementedException();
