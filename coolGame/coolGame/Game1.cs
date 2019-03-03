@@ -103,9 +103,7 @@ namespace coolGame
             player = new Player(playerTexture, new Rectangle(100, 100, playerTexture.Width, playerTexture.Height), listEntities);
 
             //Puts enemies in list; will probably be handled with level later
-            listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
-            listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(750, 400, 50, 50)));
-            listEntities.Add(new PatrolingGuard(enemyTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
+            MakeLevel1();
         }
 
         /// <summary>
@@ -356,6 +354,25 @@ namespace coolGame
         public Texture2D GetEnemy ()
         {
             return this.enemyTexture;
+        }
+
+        private void MakeLevel1 ()
+        {
+            // Obstacles
+            int screenWidth = GraphicsDevice.Viewport.Width;
+            int screenHeight = GraphicsDevice.Viewport.Height;
+            // Left
+            listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(0, 0, 1, screenHeight)));
+            // Right
+            listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(screenWidth, 0, 1, screenHeight)));
+            //Top
+            listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(0, 0, screenWidth, 1)));
+            // Bottom
+            listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(0, screenHeight, screenWidth, 1)));
+
+            // Enemies
+            listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
+            listEntities.Add(new PatrolingGuard(enemyTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
         }
 
     }
