@@ -45,7 +45,7 @@ namespace coolGame
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            // Pass
         }
     }
 }
