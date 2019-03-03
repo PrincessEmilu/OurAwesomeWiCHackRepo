@@ -9,12 +9,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace coolGame
 {
-    class Finish : GameObject
+    class Finish : Entity
     {
-        // Attribute
-        Texture2D texture;
-        Rectangle position;
-
         /// <summary>
         /// Constructor.
         /// Just initialize variables.
@@ -25,10 +21,19 @@ namespace coolGame
         /// <param name="position">
         /// Location of the object on the screen
         /// </param>
-        public Finish (Texture2D texture, Rectangle position)
+        public Finish (Texture2D texture, Rectangle position) 
+            : base (texture, position) {}
+
+        /// <summary>
+        /// The finish just
+        /// cant be hacked....
+        /// </summary>
+        /// <returns
+        /// False. Always false.
+        /// </returns>
+        public override bool CanBeHacked()
         {
-            this.texture = texture;
-            this.position = position;
+            return false;
         }
 
         /// <summary>
