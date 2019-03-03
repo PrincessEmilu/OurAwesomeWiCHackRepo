@@ -14,8 +14,6 @@ namespace coolGame
         //Fields
         //Draw effect
         protected SpriteEffects drawEffect = SpriteEffects.None;
-        protected string starterCode;
-        protected string acceptableCode;
 
         public HackableEnemy(Texture2D texture, Rectangle position)
         : base(texture, position) { }
