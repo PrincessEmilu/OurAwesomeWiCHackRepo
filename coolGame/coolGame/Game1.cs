@@ -105,6 +105,7 @@ namespace coolGame
             //Puts enemies in list; will probably be handled with level later
             listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
             listEntities.Add(new Obstacle(obstacleTexture, new Rectangle(750, 400, 50, 50)));
+            listEntities.Add(new PatrolingGuard(enemyTexture, new Rectangle(200, 800, enemyTexture.Width, enemyTexture.Height)));
         }
 
         /// <summary>

@@ -12,8 +12,8 @@ namespace coolGame
     {
 
         // Movement
-        const int moveSpeed = 5;
-        const int patrolLength = 200;
+        const int moveSpeed = 2;
+        const int patrolLength = 800;
         int amountMoved;
         bool patrolDirection = true;
 
