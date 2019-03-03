@@ -284,5 +284,21 @@ namespace coolGame
             }
             
         }
+
+        /// <summary>
+        /// Getters to universalize abailibility.
+        /// </summary>
+        /// <returns></returns>
+
+        public Player GetPlayer ()
+        {
+            return this.player;
+        }
+
+        public Texture2D getEnemy ()
+        {
+            return this.enemyTexture;
+        }
+
     }
 }
