@@ -10,8 +10,6 @@ namespace coolGame
 {
     class GuardEnemy : HackableEnemy
     {
-        //Draw effect
-        SpriteEffects drawEffect = SpriteEffects.None;
 
         //Reference to player
         Player player;

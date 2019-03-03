@@ -12,6 +12,8 @@ namespace coolGame
     class HackableEnemy : Enemy
     {
         //Fields
+        //Draw effect
+        protected SpriteEffects drawEffect = SpriteEffects.None;
 
         public HackableEnemy(Texture2D texture, Rectangle position)
         : base(texture, position) { }
@@ -24,6 +26,11 @@ namespace coolGame
         public override void Interact()
         {
             
+        }
+
+        public void DrawHack(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture, position, null, Color.LightBlue, 0, new Vector2(0, 0), drawEffect, 0);
         }
     }
 }

@@ -68,13 +68,26 @@ namespace coolGame
             return entity.Position.Intersects(pos);
         }
 
+        /// <summary>
+        /// Checks to see if an entity can be hacked.
+        /// </summary>
+        /// <param name="entities"> 
+        /// list of entities currently in the game. 
+        /// </param>
+        /// <returns>
+        /// true iff the mouse clicks on an entity 
+        /// and that entity can be hacked.
+        /// </returns>
         public static bool CheckHack (List<Entity> entities)
         {
             foreach (Entity entity in entities)
             {
                 if (CheckHackSingle(entity))
                 {
-                    return entity.CanBeHacked();
+                    if (entity.CanBeHacked())
+                    {
+                        return Helpers.GetLeftMousePressState() == Helpers.MousePressState.PRESS;
+                    }
                 }
             }
             return false;
