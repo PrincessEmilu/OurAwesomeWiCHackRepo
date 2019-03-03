@@ -13,9 +13,9 @@ namespace coolGame
 
         //Attributes
         Texture2D view;
-        String code;
+        List<string> code;
 
-        public Terminal (Texture2D view, String code)
+        public Terminal (Texture2D view, List<string> code)
         {
             this.view = view;
             this.code = code;
@@ -23,7 +23,13 @@ namespace coolGame
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            spriteBatch.Draw(this.view,
+                new Rectangle(
+                    0,
+                    0,
+                    this.view.Width,
+                    this.view.Width),
+                Color.White);
         }
 
         public override void Update(GameTime gameTime)
