@@ -11,6 +11,15 @@ namespace coolGame
 {
     static class Helpers
     {
+        public static string CONTENT_TITLE = "title";
+        public static string CONTENT_PRESS_ENTER = "pressEnterToPlay";
+        public static string CONTENT_PRESS_ENTER_HIGHLIGHT = "pressEnterToPlayHighlighted";
+        public static string CONTENT_RABBIT = "rabbit";
+        public static string CONTENT_CARROT = "carrot";
+        public static string CONTENT_ENEMY = "enemy";
+        public static string CONTENT_LEVEL1 = "level1";
+        public static string CONTENT_LEVEL1_HIGHLIGHT = "level1Highlighted";
+        public static string CONTENT_ARROW = "arrow2";
 
         public static MouseState mouseState;
         public static MouseState lastMouseState;
@@ -53,7 +62,7 @@ namespace coolGame
             return MousePressState.NONE;
         }
 
-        public static bool CheckHackSignle(Entity entity)
+        public static bool CheckHackSingle(Entity entity)
         {
             Rectangle pos = new Rectangle(Mouse.GetState().X, Mouse.GetState().Y, 1, 1);
             return entity.Position.Intersects(pos);
@@ -73,7 +82,7 @@ namespace coolGame
         {
             foreach (Entity entity in entities)
             {
-                if (CheckHackSignle(entity))
+                if (CheckHackSingle(entity))
                 {
                     if (entity.CanBeHacked())
                     {
