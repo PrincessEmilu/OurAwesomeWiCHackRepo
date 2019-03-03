@@ -103,7 +103,6 @@ namespace coolGame
 
             //Puts enemies in list; will probably be handled with level later
             listEntities.Add(new GuardEnemy(enemyTexture, new Rectangle(1000, 500, enemyTexture.Width, enemyTexture.Height), player));
-
         }
 
         /// <summary>
@@ -320,5 +319,21 @@ namespace coolGame
                 spriteBatch.Draw(level1Text, new Rectangle(l1Textx, l1Texty, l1TextWidth, l1TextHeight), Color.White);
             }
         }
+
+        /// <summary>
+        /// Getters to universalize abailibility.
+        /// </summary>
+        /// <returns></returns>
+
+        public Player GetPlayer ()
+        {
+            return this.player;
+        }
+
+        public Texture2D GetEnemy ()
+        {
+            return this.enemyTexture;
+        }
+
     }
 }
